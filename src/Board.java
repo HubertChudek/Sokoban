@@ -2,24 +2,30 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.TimerTask;
+import java.util.Timer;
 import javax.swing.*;
 
 public class Board extends JPanel {
 
     private final int OFFSET = Sokoban.OFFSET;      //odległość planszy od brzegów okna
-    public final static int SPACE = 50;                   //wielkość sprite'u bloku ściany i jednocześnie jednego pola na planszy
+    public final static int SPACE = 50;             //wielkość sprite'u bloku ściany i jednocześnie jednego pola na planszy
     private final int LEFT_COLLISION = 1;           //ustalenie typów kolizji
     private final int RIGHT_COLLISION = 2;
     private final int TOP_COLLISION = 3;
     private final int BOTTOM_COLLISION = 4;
 
-    private ArrayList<Wall> walls;      //listy przechowujące wszystkie części mapy
+    private ArrayList<Wall> walls;          //listy przechowujące wszystkie części mapy
     private ArrayList<Baggage> baggs;
     private ArrayList<Area> areas;
 
     private Player soko;
     private int w = 0;
     private int h = 0;
+    private Thread animator;
+    private int moves = 0;
+    private int counter = 0;               //timer do zliczania czasu gry
+    private Timer timer;
 
     private boolean isCompleted = false;
 
@@ -46,6 +52,7 @@ public class Board extends JPanel {
         addKeyListener(new TAdapter());     //dodaje nasłuchiwacz klawiatury do komponentu
         setFocusable(true);
         initWorld();
+        initScores();
     }
 
     private void initWorld() {          //inicjuje mapę
@@ -98,9 +105,45 @@ public class Board extends JPanel {
         this.h = y;                   //dosotsowuje wysokość okna do liczby rzędów
     }
 
-    private void buildWorld(Graphics g) {            //rysuje obiekty świata na planszy
+    @Override
+    public void addNotify() {
+        super.addNotify();
 
-        g.setColor(new Color(255, 143, 175));
+        animator = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    repaint();
+                    try {
+                        Thread.sleep(30);
+                    } catch (InterruptedException e) {
+
+                    }
+                }
+            }
+        });
+        animator.start();
+    }
+
+    private void initScores() {
+
+        counter = 0;
+        moves = 0;
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                counter++;
+            }
+        };
+
+        timer = new Timer("Timer");
+        timer.scheduleAtFixedRate(timerTask, 1000, 1000);
+
+    }
+
+    private void drawWorld(Graphics g) {            //rysuje obiekty świata na planszy
+
+        g.setColor(new Color(146, 148, 142));
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         ArrayList<Actor> world = new ArrayList<>();
@@ -119,16 +162,56 @@ public class Board extends JPanel {
 
         if (isCompleted) {
 
-            g.setColor(new Color(0, 0, 0));
-            g.drawString("Completed", 25, 20);
+            drawCompleted(g);
         }
     }
+
+    private void drawCompleted(Graphics g) {
+
+        String msg1 = "Completed";
+        String msg2 = "Press 'r' to restart";
+        Font big = new Font("Calibri", Font.BOLD, 100);
+        Font small = new Font("Dialog.plain", Font.BOLD, 15);
+        FontMetrics fm1 = getFontMetrics(big);
+        FontMetrics stdfm = getFontMetrics(small);
+
+
+        g.setColor(new Color(105, 255, 56));
+        g.setFont(big);
+        g.drawString(msg1, (getBoardWidth() - fm1.stringWidth(msg1)) / 2,
+                getBoardHeight() / 2);
+
+        g.setFont(small);
+        g.setColor(Color.BLACK);
+        g.drawString(msg2, (getBoardWidth() - stdfm.stringWidth(msg2)) / 2, (getBoardHeight() / 2) + 30);
+    }
+
+    private void drawScores(Graphics g) {
+        String time = "Time passed: 0" + counter / 60 + ":";
+        if (counter < 10) {
+            time += "0" + counter % 60;
+        } else {
+            time += counter % 60;
+        }
+
+        Font small = new Font("Dialog.plain", Font.BOLD, 15);
+        g.setFont(small);
+        g.setColor(new Color(0, 0, 0));
+        g.drawString(time, 25, 20);
+
+        String moves = "Moves: " + this.moves;
+
+        g.setColor(new Color(0, 0, 0));
+        g.drawString(moves, 25, 35);
+    }
+
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        buildWorld(g);
+        drawWorld(g);
+        drawScores(g);
         Toolkit.getDefaultToolkit().sync();
     }
 
@@ -136,6 +219,13 @@ public class Board extends JPanel {
 
         @Override
         public void keyPressed(KeyEvent e) {
+
+            if (isCompleted) {
+                if (e.getKeyCode() == KeyEvent.VK_R) {
+                    restartLevel();
+                }
+                return;
+            }
 
             switch (e.getKeyCode()) {           //pobrannie kodu klawisza i na jego podstawie wykonanie określonej akcji
                 case KeyEvent.VK_LEFT:
@@ -146,6 +236,7 @@ public class Board extends JPanel {
                         break;
                     }
                     soko.move(-SPACE, 0);
+                    moves++;
                     break;
                 case KeyEvent.VK_RIGHT:
                     if (checkWallCollision(soko, RIGHT_COLLISION)) {
@@ -155,6 +246,7 @@ public class Board extends JPanel {
                         break;
                     }
                     soko.move(SPACE, 0);
+                    moves++;
                     break;
                 case KeyEvent.VK_UP:
                     if (checkWallCollision(soko, TOP_COLLISION)) {
@@ -164,6 +256,7 @@ public class Board extends JPanel {
                         break;
                     }
                     soko.move(0, -SPACE);
+                    moves++;
                     break;
                 case KeyEvent.VK_DOWN:
                     if (checkWallCollision(soko, BOTTOM_COLLISION)) {
@@ -173,6 +266,7 @@ public class Board extends JPanel {
                         break;
                     }
                     soko.move(0, SPACE);
+                    moves++;
                     break;
                 case KeyEvent.VK_R:
                     restartLevel();
@@ -181,10 +275,6 @@ public class Board extends JPanel {
                     break;
             }
             isCompleted();
-            repaint();
-            if (isCompleted) {
-                return;
-            }
         }
     }
 
@@ -373,15 +463,15 @@ public class Board extends JPanel {
                 Area area = areas.get(j);
 
                 if (bag.getX() == area.getX() && bag.getY() == area.getY()) {
-                    finishedBags += 1;                                      //!!!
+                    finishedBags += 1;
                 }
             }
         }
 
-        if (numberOfBags == finishedBags) {
+        if (finishedBags == numberOfBags) {
 
             isCompleted = true;
-            repaint();
+            timer.cancel();
         }
 
     }
@@ -394,6 +484,7 @@ public class Board extends JPanel {
 
         initWorld();
         isCompleted = false;
+        initScores();
     }
 
 
