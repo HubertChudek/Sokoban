@@ -28,6 +28,7 @@ public class Board extends JPanel {
     private Timer timer;
 
     private boolean isCompleted = false;
+    private boolean isPaused = false;
 
     private String level                    //poziom jest przechowywany w postaci ciągu znaków,
             = "    ######\n"                //w celu czytelności i łatwości edycji
@@ -129,6 +130,12 @@ public class Board extends JPanel {
 
         counter = 0;
         moves = 0;
+        initTimer();
+
+    }
+
+    private void initTimer() {
+
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
@@ -138,7 +145,6 @@ public class Board extends JPanel {
 
         timer = new Timer("Timer");
         timer.scheduleAtFixedRate(timerTask, 1000, 1000);
-
     }
 
     private void drawWorld(Graphics g) {            //rysuje obiekty świata na planszy
@@ -220,9 +226,16 @@ public class Board extends JPanel {
         @Override
         public void keyPressed(KeyEvent e) {
 
-            if (isCompleted) {
-                if (e.getKeyCode() == KeyEvent.VK_R) {
-                    restartLevel();
+            if (isCompleted || isPaused) {
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_R:
+                        restartLevel();
+                        break;
+                    case KeyEvent.VK_ESCAPE:
+                        togglePause();
+                        break;
+                    default:
+                        break;
                 }
                 return;
             }
@@ -270,6 +283,9 @@ public class Board extends JPanel {
                     break;
                 case KeyEvent.VK_R:
                     restartLevel();
+                    break;
+                case KeyEvent.VK_ESCAPE:
+                    togglePause();
                     break;
                 default:
                     break;
@@ -468,7 +484,7 @@ public class Board extends JPanel {
             }
         }
 
-        if (finishedBags == numberOfBags) {
+        if (finishedBags == 1) { //(finishedBags == numberOfBags)
 
             isCompleted = true;
             timer.cancel();
@@ -485,6 +501,18 @@ public class Board extends JPanel {
         initWorld();
         isCompleted = false;
         initScores();
+    }
+
+    public void togglePause() {
+
+        System.out.println("pause");
+        if (isPaused == true) {
+            initTimer();
+            isPaused = false;
+        } else {
+            timer.cancel();
+            isPaused = true;
+        }
     }
 
 
