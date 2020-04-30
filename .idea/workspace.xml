@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="09d439c6-28a5-489c-a5d4-f42f41a24d06" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sokoban/Board$TAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sokoban/Board$TAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sokoban/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sokoban/Board.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +75,7 @@
       <workItem from="1587576390189" duration="8552000" />
       <workItem from="1587668750275" duration="3211000" />
       <workItem from="1587724791820" duration="6925000" />
-      <workItem from="1588275135116" duration="1268000" />
+      <workItem from="1588275135116" duration="1979000" />
     </task>
     <task id="LOCAL-00001" summary="add moves and time count">
       <created>1587731709695</created>
@@ -82,7 +84,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587731709695</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add pause">
+      <created>1588276450965</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1588276450965</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -90,33 +99,34 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add moves and time count" />
-    <option name="LAST_COMMIT_MESSAGE" value="add moves and time count" />
+    <MESSAGE value="add pause" />
+    <option name="LAST_COMMIT_MESSAGE" value="add pause" />
   </component>
   <component name="WindowStateProjectService">
     <state x="525" y="139" key="#com.intellij.ide.util.MemberChooser" timestamp="1587671554565">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="525" y="139" key="#com.intellij.ide.util.MemberChooser/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587671554565" />
-    <state x="162" y="24" key="CommitChangelistDialog2" timestamp="1587731707869">
+    <state x="162" y="24" key="CommitChangelistDialog2" timestamp="1588276449336">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587731707869" />
-    <state width="1397" height="222" key="GridCell.Tab.0.bottom" timestamp="1588276342355">
+    <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588276449336" />
+    <state width="1397" height="222" key="GridCell.Tab.0.bottom" timestamp="1588277207510">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="222" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588276342355" />
-    <state width="1397" height="222" key="GridCell.Tab.0.center" timestamp="1588276342354">
+    <state width="1397" height="222" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588277207510" />
+    <state width="1397" height="222" key="GridCell.Tab.0.center" timestamp="1588277207509">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="222" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588276342354" />
-    <state width="1397" height="222" key="GridCell.Tab.0.left" timestamp="1588276342354">
+    <state width="1397" height="222" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588277207509" />
+    <state width="1397" height="222" key="GridCell.Tab.0.left" timestamp="1588277207509">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="222" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588276342354" />
-    <state width="1397" height="222" key="GridCell.Tab.0.right" timestamp="1588276342354">
+    <state width="1397" height="222" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588277207509" />
+    <state width="1397" height="222" key="GridCell.Tab.0.right" timestamp="1588277207509">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="222" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588276342354" />
+    <state width="1397" height="222" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588277207509" />
     <state width="1397" height="186" key="GridCell.Tab.1.bottom" timestamp="1587585941287">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
@@ -141,10 +151,10 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="416" y="28" width="607" height="804" key="find.popup/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587579560124" />
-    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1587729951137">
+    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1588277070036">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587729951137" />
+    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588277070036" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

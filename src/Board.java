@@ -45,6 +45,7 @@ public class Board extends JPanel {
 
     public Board() {
 
+        timer = new Timer();
         initBoard();
     }
 
@@ -136,6 +137,7 @@ public class Board extends JPanel {
 
     private void initTimer() {
 
+        timer.cancel();
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
@@ -471,9 +473,7 @@ public class Board extends JPanel {
         int numberOfBags = baggs.size();
         int finishedBags = 0;
 
-        for (int i = 0; i < numberOfBags; i++) {
-            Baggage bag = baggs.get(i);
-
+        for (Baggage bag : baggs) {
             for (int j = 0; j < numberOfBags; j++) {
 
                 Area area = areas.get(j);
@@ -500,13 +500,16 @@ public class Board extends JPanel {
 
         initWorld();
         isCompleted = false;
+        if(isPaused){
+            togglePause();
+        }
         initScores();
     }
 
     public void togglePause() {
 
         System.out.println("pause");
-        if (isPaused == true) {
+        if (isPaused) {
             initTimer();
             isPaused = false;
         } else {
