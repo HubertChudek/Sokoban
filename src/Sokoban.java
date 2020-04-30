@@ -14,6 +14,14 @@ public class Sokoban extends JFrame {
 
         Board board = new Board();
         add(board);
+        board.setLayout(null);
+
+        var menuButton = new JButton("M");
+        menuButton.addActionListener((event) -> board.togglePause());
+        menuButton.setBackground(Color.BLUE);
+        menuButton.setFocusable(false);
+        menuButton.setBounds(board.getBoardWidth() - 2 * OFFSET, OFFSET, 40, 40);
+        board.add(menuButton);
 
         setTitle("Sokoban");
         setSize(board.getBoardWidth() + OFFSET, board.getBoardHeight() + 2 * OFFSET);

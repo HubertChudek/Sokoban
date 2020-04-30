@@ -127,6 +127,7 @@ public class Board extends JPanel {
         animator.start();
     }
 
+
     private void initScores() {
 
         counter = 0;
