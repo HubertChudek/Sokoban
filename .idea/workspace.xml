@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09d439c6-28a5-489c-a5d4-f42f41a24d06" name="Default Changelist" comment="">
+    <list default="true" id="09d439c6-28a5-489c-a5d4-f42f41a24d06" name="Default Changelist" comment="encapsulate button initiation code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sokoban.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sokoban.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sokoban/Board$TAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sokoban/Board$TAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sokoban/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sokoban/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,9 +44,16 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Sokoban">
     <configuration name="Sokoban" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Sokoban" />
+      <module name="Sokoban" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SplitPaneTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SplitPaneTest" />
       <module name="Sokoban" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -53,6 +62,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Sokoban" />
+        <item itemvalue="Application.SplitPaneTest" />
       </list>
     </recent_temporary>
   </component>
@@ -72,7 +82,7 @@
       <workItem from="1588278006490" duration="514000" />
       <workItem from="1588278574800" duration="3025000" />
       <workItem from="1588347061687" duration="650000" />
-      <workItem from="1589474262145" duration="6080000" />
+      <workItem from="1589474262145" duration="8588000" />
     </task>
     <task id="LOCAL-00001" summary="add button on board and add pause() method as action">
       <created>1588281572351</created>
@@ -109,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589480317498</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="encapsulate button initiation code">
+      <created>1589480538937</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1589480538937</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,34 +138,35 @@
     <MESSAGE value="add semaphore synchronization" />
     <MESSAGE value="add menu button icon" />
     <MESSAGE value="set background color of menu button" />
-    <option name="LAST_COMMIT_MESSAGE" value="set background color of menu button" />
+    <MESSAGE value="encapsulate button initiation code" />
+    <option name="LAST_COMMIT_MESSAGE" value="encapsulate button initiation code" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="162" y="24" key="CommitChangelistDialog2" timestamp="1589480315819">
+    <state x="162" y="24" key="CommitChangelistDialog2" timestamp="1589483004544">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281571155" />
-    <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480315819" />
-    <state width="1397" height="222" key="GridCell.Tab.0.bottom" timestamp="1589480507097">
+    <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589483004544" />
+    <state width="1397" height="222" key="GridCell.Tab.0.bottom" timestamp="1589483020952">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="222" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480507097" />
-    <state width="1397" height="222" key="GridCell.Tab.0.center" timestamp="1589480507096">
+    <state width="1397" height="222" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589483020952" />
+    <state width="1397" height="222" key="GridCell.Tab.0.center" timestamp="1589483020952">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="222" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480507096" />
-    <state width="1397" height="222" key="GridCell.Tab.0.left" timestamp="1589480507096">
+    <state width="1397" height="222" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589483020952" />
+    <state width="1397" height="222" key="GridCell.Tab.0.left" timestamp="1589483020952">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="222" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480507096" />
-    <state width="1397" height="222" key="GridCell.Tab.0.right" timestamp="1589480507096">
+    <state width="1397" height="222" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589483020952" />
+    <state width="1397" height="222" key="GridCell.Tab.0.right" timestamp="1589483020952">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="222" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480507096" />
+    <state width="1397" height="222" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589483020952" />
     <state width="1397" height="186" key="GridCell.Tab.1.bottom" timestamp="1587581294327">
       <screen x="0" y="0" width="1440" height="860" />
     </state>

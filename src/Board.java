@@ -106,6 +106,7 @@ public class Board extends JPanel {
                     break;
             }
         }
+        this.w += OFFSET;
         this.h = y;                   //dosotsowuje wysokość okna do liczby rzędów
     }
 
@@ -118,6 +119,7 @@ public class Board extends JPanel {
             public void run() {
                 while (true) {
                     try {
+                        revalidate();
                         repaint();
                         Thread.sleep(30);
                     } catch (InterruptedException e) {
