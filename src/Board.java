@@ -210,7 +210,7 @@ public class Board extends JPanel {
         try {
             sem.acquire();
             time = "Time passed: 0" + counter / 60 + ":";
-            if (counter < 10) {
+            if (counter % 60 < 10) {
                 time += "0" + counter % 60;
             } else {
                 time += counter % 60;
