@@ -16,9 +16,10 @@ public class Sokoban extends JFrame {
         add(board);
         board.setLayout(null);
 
-        var menuButton = new JButton("M");
+        var menuButton = new JButton(new ImageIcon("assets/pause.png"));
+        menuButton.setMargin(new Insets(0, 0, 0, 0));
         menuButton.addActionListener((event) -> board.togglePause());
-        menuButton.setBackground(Color.BLUE);
+        //menuButton.setBackground(Color.BLUE);
         menuButton.setFocusable(false);
         menuButton.setBounds(board.getBoardWidth() - 2 * OFFSET, OFFSET, 40, 40);
         board.add(menuButton);
