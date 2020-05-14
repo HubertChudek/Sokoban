@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.TimerTask;
 import java.util.Timer;
+import java.util.concurrent.Semaphore;
 import javax.swing.*;
 
 public class Board extends JPanel {
@@ -29,6 +30,7 @@ public class Board extends JPanel {
 
     private boolean isCompleted = false;
     private boolean isPaused = false;
+    private Semaphore sem = new Semaphore(1);
 
     private String level                    //poziom jest przechowywany w postaci ciągu znaków,
             = "    ######\n"                //w celu czytelności i łatwości edycji
@@ -104,6 +106,7 @@ public class Board extends JPanel {
                     break;
             }
         }
+        this.w += OFFSET;
         this.h = y;                   //dosotsowuje wysokość okna do liczby rzędów
     }
 
@@ -115,8 +118,9 @@ public class Board extends JPanel {
             @Override
             public void run() {
                 while (true) {
-                    repaint();
                     try {
+                        revalidate();
+                        repaint();
                         Thread.sleep(30);
                     } catch (InterruptedException e) {
 
@@ -126,6 +130,7 @@ public class Board extends JPanel {
         });
         animator.start();
     }
+
 
     private void initScores() {
 
@@ -141,7 +146,13 @@ public class Board extends JPanel {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                counter++;
+                try {
+                    sem.acquire();
+                    counter++;
+                    sem.release();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         };
 
@@ -195,11 +206,18 @@ public class Board extends JPanel {
     }
 
     private void drawScores(Graphics g) {
-        String time = "Time passed: 0" + counter / 60 + ":";
-        if (counter < 10) {
-            time += "0" + counter % 60;
-        } else {
-            time += counter % 60;
+        String time = "Time passed: 0";
+        try {
+            sem.acquire();
+            time = "Time passed: 0" + counter / 60 + ":";
+            if (counter < 10) {
+                time += "0" + counter % 60;
+            } else {
+                time += counter % 60;
+            }
+            sem.release();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
         Font small = new Font("Dialog.plain", Font.BOLD, 15);
@@ -500,7 +518,7 @@ public class Board extends JPanel {
 
         initWorld();
         isCompleted = false;
-        if(isPaused){
+        if (isPaused) {
             togglePause();
         }
         initScores();

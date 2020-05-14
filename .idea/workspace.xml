@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09d439c6-28a5-489c-a5d4-f42f41a24d06" name="Default Changelist" comment="add tracked files before merge">
+    <list default="true" id="09d439c6-28a5-489c-a5d4-f42f41a24d06" name="Default Changelist" comment="encapsulate button initiation code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sokoban/Board$TAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sokoban/Board$TAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sokoban/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sokoban/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,14 +16,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="menu" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -33,7 +35,6 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
@@ -62,7 +63,6 @@
       <list>
         <item itemvalue="Application.Sokoban" />
         <item itemvalue="Application.SplitPaneTest" />
-        <item itemvalue="Application.Sokoban" />
       </list>
     </recent_temporary>
   </component>
@@ -78,107 +78,139 @@
       <updated>1586948847662</updated>
       <workItem from="1586948851642" duration="7338000" />
       <workItem from="1587576013541" duration="258000" />
-      <workItem from="1587576390189" duration="8552000" />
-      <workItem from="1587668750275" duration="3211000" />
-      <workItem from="1587724791820" duration="6925000" />
-      <workItem from="1588275135116" duration="1979000" />
+      <workItem from="1587576390189" duration="8041000" />
+      <workItem from="1588278006490" duration="514000" />
+      <workItem from="1588278574800" duration="3025000" />
+      <workItem from="1588347061687" duration="650000" />
+      <workItem from="1589474262145" duration="8588000" />
     </task>
-    <task id="LOCAL-00001" summary="add moves and time count">
-      <created>1587731709695</created>
+    <task id="LOCAL-00001" summary="add button on board and add pause() method as action">
+      <created>1588281572351</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1587731709695</updated>
+      <updated>1588281572351</updated>
     </task>
-    <task id="LOCAL-00002" summary="add pause">
-      <created>1588276450965</created>
+    <task id="LOCAL-00002" summary="remove Fonts file">
+      <created>1589476719151</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1588276450965</updated>
+      <updated>1589476719151</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add semaphore synchronization">
+      <created>1589479031867</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589479031867</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add menu button icon">
+      <created>1589480164538</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1589480164538</updated>
+    </task>
+    <task id="LOCAL-00005" summary="set background color of menu button">
+      <created>1589480317498</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1589480317498</updated>
+    </task>
+    <task id="LOCAL-00006" summary="encapsulate button initiation code">
+      <created>1589480538937</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1589480538937</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add moves and time count" />
-    <MESSAGE value="add pause" />
-    <option name="LAST_COMMIT_MESSAGE" value="add pause" />
+    <MESSAGE value="add button on board and add pause() method as action" />
+    <MESSAGE value="remove Fonts file" />
+    <MESSAGE value="add semaphore synchronization" />
+    <MESSAGE value="add menu button icon" />
+    <MESSAGE value="set background color of menu button" />
+    <MESSAGE value="encapsulate button initiation code" />
+    <option name="LAST_COMMIT_MESSAGE" value="encapsulate button initiation code" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="525" y="139" key="#com.intellij.ide.util.MemberChooser" timestamp="1587671554565">
+    <state x="312" y="88" key="#Notifications" timestamp="1589483805185">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="525" y="139" key="#com.intellij.ide.util.MemberChooser/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587671554565" />
-    <state x="162" y="24" key="CommitChangelistDialog2" timestamp="1589484570557">
+    <state x="312" y="88" key="#Notifications/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589483805185" />
+    <state x="162" y="24" key="CommitChangelistDialog2" timestamp="1589483662654">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588276449336" />
-    <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589484570557" />
-    <state width="1397" height="222" key="GridCell.Tab.0.bottom" timestamp="1589484203133">
+    <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281571155" />
+    <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589483662654" />
+    <state width="698" height="222" key="GridCell.Tab.0.bottom" timestamp="1589483763297">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="222" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588277207510" />
-    <state width="1397" height="222" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589484203133" />
-    <state width="1397" height="222" key="GridCell.Tab.0.center" timestamp="1589484203133">
+    <state width="1397" height="222" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
+    <state width="698" height="222" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589483763297" />
+    <state width="698" height="222" key="GridCell.Tab.0.center" timestamp="1589483763297">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="222" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588277207509" />
-    <state width="1397" height="222" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589484203133" />
-    <state width="1397" height="222" key="GridCell.Tab.0.left" timestamp="1589484203133">
+    <state width="1397" height="222" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
+    <state width="698" height="222" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589483763297" />
+    <state width="698" height="222" key="GridCell.Tab.0.left" timestamp="1589483763297">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="222" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588277207509" />
-    <state width="1397" height="222" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589484203133" />
-    <state width="1397" height="222" key="GridCell.Tab.0.right" timestamp="1589484203133">
+    <state width="1397" height="222" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
+    <state width="698" height="222" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589483763297" />
+    <state width="698" height="222" key="GridCell.Tab.0.right" timestamp="1589483763297">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="222" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588277207509" />
-    <state width="1397" height="222" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589484203133" />
-    <state width="1397" height="186" key="GridCell.Tab.1.bottom" timestamp="1587585941287">
+    <state width="1397" height="222" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
+    <state width="698" height="222" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589483763297" />
+    <state width="1397" height="186" key="GridCell.Tab.1.bottom" timestamp="1587581294327">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="186" key="GridCell.Tab.1.bottom/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587585941287" />
-    <state width="1397" height="186" key="GridCell.Tab.1.center" timestamp="1587585941287">
+    <state width="1397" height="186" key="GridCell.Tab.1.bottom/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587581294327" />
+    <state width="1397" height="186" key="GridCell.Tab.1.center" timestamp="1587581294326">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="186" key="GridCell.Tab.1.center/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587585941287" />
-    <state width="1397" height="186" key="GridCell.Tab.1.left" timestamp="1587585941287">
+    <state width="1397" height="186" key="GridCell.Tab.1.center/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587581294326" />
+    <state width="1397" height="186" key="GridCell.Tab.1.left" timestamp="1587581294326">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="186" key="GridCell.Tab.1.left/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587585941287" />
-    <state width="1397" height="186" key="GridCell.Tab.1.right" timestamp="1587585941287">
+    <state width="1397" height="186" key="GridCell.Tab.1.left/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587581294326" />
+    <state width="1397" height="186" key="GridCell.Tab.1.right" timestamp="1587581294327">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1397" height="186" key="GridCell.Tab.1.right/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587585941287" />
-    <state x="416" y="253" key="com.intellij.ide.util.TipDialog" timestamp="1587724848378">
+    <state width="1397" height="186" key="GridCell.Tab.1.right/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587581294327" />
+    <state x="338" y="151" key="RollbackChangesDialog" timestamp="1588980354966">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="416" y="253" key="com.intellij.ide.util.TipDialog/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587724848378" />
+    <state x="338" y="151" key="RollbackChangesDialog/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1588980354966" />
+    <state x="312" y="162" key="Vcs.Push.Dialog.v2" timestamp="1589483761549">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="312" y="162" key="Vcs.Push.Dialog.v2/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281583424" />
+    <state x="312" y="162" key="Vcs.Push.Dialog.v2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589483761549" />
+    <state x="416" y="253" key="com.intellij.ide.util.TipDialog" timestamp="1588347081641">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="416" y="253" key="com.intellij.ide.util.TipDialog/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588347081641" />
     <state x="416" y="28" width="607" height="804" key="find.popup" timestamp="1587579560124">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="416" y="28" width="607" height="804" key="find.popup/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1587579560124" />
-    <state x="357" y="142" key="git4idea.branch.GitSmartOperationDialog" timestamp="1589484227078">
+    <state x="357" y="142" key="git4idea.branch.GitSmartOperationDialog" timestamp="1589483779779">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="357" y="142" key="git4idea.branch.GitSmartOperationDialog/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589484227078" />
-    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1588277070036">
+    <state x="357" y="142" key="git4idea.branch.GitSmartOperationDialog/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589483779779" />
+    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1588281323901">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588277070036" />
+    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281323901" />
   </component>
 </project>
