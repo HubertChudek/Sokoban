@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="09d439c6-28a5-489c-a5d4-f42f41a24d06" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sokoban/Sokoban.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sokoban/Sokoban.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sokoban.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sokoban.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +72,7 @@
       <workItem from="1588278006490" duration="514000" />
       <workItem from="1588278574800" duration="3025000" />
       <workItem from="1588347061687" duration="650000" />
-      <workItem from="1589474262145" duration="5828000" />
+      <workItem from="1589474262145" duration="6080000" />
     </task>
     <task id="LOCAL-00001" summary="add button on board and add pause() method as action">
       <created>1588281572351</created>
@@ -103,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589480164538</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="set background color of menu button">
+      <created>1589480317498</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1589480317498</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,34 +120,35 @@
     <MESSAGE value="remove Fonts file" />
     <MESSAGE value="add semaphore synchronization" />
     <MESSAGE value="add menu button icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="add menu button icon" />
+    <MESSAGE value="set background color of menu button" />
+    <option name="LAST_COMMIT_MESSAGE" value="set background color of menu button" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="162" y="24" key="CommitChangelistDialog2" timestamp="1589480163052">
+    <state x="162" y="24" key="CommitChangelistDialog2" timestamp="1589480315819">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281571155" />
-    <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480163052" />
-    <state width="1397" height="222" key="GridCell.Tab.0.bottom" timestamp="1589480279168">
+    <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480315819" />
+    <state width="1397" height="222" key="GridCell.Tab.0.bottom" timestamp="1589480507097">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="222" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480279168" />
-    <state width="1397" height="222" key="GridCell.Tab.0.center" timestamp="1589480279168">
+    <state width="1397" height="222" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480507097" />
+    <state width="1397" height="222" key="GridCell.Tab.0.center" timestamp="1589480507096">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="222" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480279168" />
-    <state width="1397" height="222" key="GridCell.Tab.0.left" timestamp="1589480279168">
+    <state width="1397" height="222" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480507096" />
+    <state width="1397" height="222" key="GridCell.Tab.0.left" timestamp="1589480507096">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="222" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480279168" />
-    <state width="1397" height="222" key="GridCell.Tab.0.right" timestamp="1589480279168">
+    <state width="1397" height="222" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480507096" />
+    <state width="1397" height="222" key="GridCell.Tab.0.right" timestamp="1589480507096">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="222" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480279168" />
+    <state width="1397" height="222" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480507096" />
     <state width="1397" height="186" key="GridCell.Tab.1.bottom" timestamp="1587581294327">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
@@ -162,11 +169,11 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="338" y="151" key="RollbackChangesDialog/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1588980354966" />
-    <state x="312" y="162" key="Vcs.Push.Dialog.v2" timestamp="1589479070891">
+    <state x="312" y="162" key="Vcs.Push.Dialog.v2" timestamp="1589480327276">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="312" y="162" key="Vcs.Push.Dialog.v2/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281583424" />
-    <state x="312" y="162" key="Vcs.Push.Dialog.v2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589479070891" />
+    <state x="312" y="162" key="Vcs.Push.Dialog.v2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589480327276" />
     <state x="416" y="253" key="com.intellij.ide.util.TipDialog" timestamp="1588347081641">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
