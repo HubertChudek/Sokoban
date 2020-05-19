@@ -519,8 +519,6 @@ public class Board extends JPanel {
     }
 
     public void togglePause() {
-
-        System.out.println("pause");
         if (isPaused) {
             initTimer();
             isPaused = false;

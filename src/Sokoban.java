@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 public class Sokoban extends JFrame {
 
     public static final int OFFSET = 30;
+    private JSplitPane splitPane;
+    private Board board;
 
     public Sokoban() {
 
@@ -14,20 +16,20 @@ public class Sokoban extends JFrame {
 
     private void initUI() {
 
-        Board board = new Board();
+        board = new Board();
         add(board);
         board.setLayout(null);
         initMenuBttn(board);
 
-        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,board, new JPanel());
-        splitPane.setOneTouchExpandable(true);
-        splitPane.setDividerLocation(board.getBoardWidth()-300);
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, board, new JPanel());
+        splitPane.setOneTouchExpandable(false);
+        splitPane.setDividerLocation(board.getBoardWidth() + 100);
+        splitPane.setDividerSize(0);
         add(splitPane);
 
 //Provide minimum sizes for the two components in the split pane
-        Dimension minimumSize = new Dimension(600, 600);
-        board.setMinimumSize(minimumSize);
-
+        Dimension minimumSize = new Dimension(200, 200);
+        //board.setMinimumSize(minimumSize);
 
         setTitle("Sokoban");
         setSize(board.getBoardWidth() + OFFSET, board.getBoardHeight() + 2 * OFFSET);
@@ -43,6 +45,7 @@ public class Sokoban extends JFrame {
             @Override
             public void actionPerformed(ActionEvent event) {
                 board.togglePause();
+                splitPane.setDividerLocation(board.getBoardWidth() - 300);
             }
         });
         menuButton.setBackground(new Color(193, 191, 255));
@@ -50,6 +53,7 @@ public class Sokoban extends JFrame {
         menuButton.setBounds(board.getBoardWidth() - 2 * OFFSET, OFFSET, 40, 40);
         board.add(menuButton);
     }
+
 
     public static void main(String[] args) {
 
