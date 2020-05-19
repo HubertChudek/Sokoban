@@ -496,7 +496,7 @@ public class Board extends JPanel {
             }
         }
 
-        if (finishedBags == 1) { //(finishedBags == numberOfBags)
+        if (finishedBags == numberOfBags) { //(finishedBags == numberOfBags)
 
             isCompleted = true;
             timer.cancel();
