@@ -9,7 +9,6 @@ import javax.swing.*;
 
 public class Board extends JPanel {
 
-    private final int OFFSET = Sokoban.OFFSET;      //odległość planszy od brzegów okna
     public final static int SPACE = 50;             //wielkość sprite'u bloku ściany i jednocześnie jednego pola na planszy
     private final int LEFT_COLLISION = 1;           //ustalenie typów kolizji
     private final int RIGHT_COLLISION = 2;
@@ -23,7 +22,6 @@ public class Board extends JPanel {
     private Player soko;
     private int w = 0;
     private int h = 0;
-    private Thread animator;
     private int moves = 0;
     private int counter = 0;               //timer do zliczania czasu gry
     private Timer timer;
@@ -65,6 +63,8 @@ public class Board extends JPanel {
         baggs = new ArrayList<>();
         areas = new ArrayList<>();
 
+        //odległość planszy od brzegów okna
+        int OFFSET = Sokoban.OFFSET;
         int x = OFFSET;                 //ustalanie początku rysowania elementów
         int y = OFFSET;
 
@@ -114,7 +114,7 @@ public class Board extends JPanel {
     public void addNotify() {
         super.addNotify();
 
-        animator = new Thread(new Runnable() {
+        Thread animator = new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true) {
@@ -122,7 +122,7 @@ public class Board extends JPanel {
                         revalidate();
                         repaint();
                         Thread.sleep(30);
-                    } catch (InterruptedException e) {
+                    } catch (InterruptedException ignored) {
 
                     }
                 }
@@ -172,9 +172,7 @@ public class Board extends JPanel {
         world.addAll(baggs);
         world.add(soko);
 
-        for (int i = 0; i < world.size(); i++) {
-
-            Actor item = world.get(i);
+        for (Actor item : world) {
 
             g.drawImage(item.getImage(), item.getX(), item.getY(), this);
         }
@@ -319,32 +317,28 @@ public class Board extends JPanel {
         switch (type) {
             case LEFT_COLLISION:
 
-                for (int i = 0; i < walls.size(); i++) {
-                    Wall wall = walls.get(i);
+                for (Wall wall : walls) {
                     if (actor.isLeftCollision(wall)) {
                         return true;
                     }
                 }
                 return false;
             case RIGHT_COLLISION:
-                for (int i = 0; i < walls.size(); i++) {
-                    Wall wall = walls.get(i);
+                for (Wall wall : walls) {
                     if (actor.isRightCollision(wall)) {
                         return true;
                     }
                 }
                 return false;
             case TOP_COLLISION:
-                for (int i = 0; i < walls.size(); i++) {
-                    Wall wall = walls.get(i);
+                for (Wall wall : walls) {
                     if (actor.isTopCollision(wall)) {
                         return true;
                     }
                 }
                 return false;
             case BOTTOM_COLLISION:
-                for (int i = 0; i < walls.size(); i++) {
-                    Wall wall = walls.get(i);
+                for (Wall wall : walls) {
                     if (actor.isBottomCollision(wall)) {
                         return true;
                     }

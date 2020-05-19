@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Sokoban extends JFrame {
 
@@ -17,6 +19,16 @@ public class Sokoban extends JFrame {
         board.setLayout(null);
         initMenuBttn(board);
 
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,board, new JPanel());
+        splitPane.setOneTouchExpandable(true);
+        splitPane.setDividerLocation(board.getBoardWidth()-300);
+        add(splitPane);
+
+//Provide minimum sizes for the two components in the split pane
+        Dimension minimumSize = new Dimension(600, 600);
+        board.setMinimumSize(minimumSize);
+
+
         setTitle("Sokoban");
         setSize(board.getBoardWidth() + OFFSET, board.getBoardHeight() + 2 * OFFSET);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     //ustawia akcję na kliknięcie przycisku zamykania(nie jest ustawiona domyślnie)
@@ -24,10 +36,15 @@ public class Sokoban extends JFrame {
         setResizable(false);
     }
 
-    public void initMenuBttn(Board board) {
-        var menuButton = new JButton(new ImageIcon("assets/pause.png"));
+    public void initMenuBttn(final Board board) {
+        JButton menuButton = new JButton(new ImageIcon("assets/pause.png"));
         menuButton.setMargin(new Insets(0, 0, 0, 0));
-        menuButton.addActionListener((event) -> board.togglePause());
+        menuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                board.togglePause();
+            }
+        });
         menuButton.setBackground(new Color(193, 191, 255));
         menuButton.setFocusable(false);
         menuButton.setBounds(board.getBoardWidth() - 2 * OFFSET, OFFSET, 40, 40);
@@ -36,9 +53,12 @@ public class Sokoban extends JFrame {
 
     public static void main(String[] args) {
 
-        EventQueue.invokeLater(() -> {
-            Sokoban game = new Sokoban();
-            game.setVisible(true);
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Sokoban game = new Sokoban();
+                game.setVisible(true);
+            }
         });
     }
 
