@@ -497,11 +497,9 @@ public class Board extends JPanel {
         }
 
         if (finishedBags == numberOfBags) { //(finishedBags == numberOfBags)
-
             isCompleted = true;
             timer.cancel();
         }
-
     }
 
     public void restartLevel() {
@@ -527,7 +525,6 @@ public class Board extends JPanel {
             isPaused = true;
         }
     }
-
 
     public int getBoardWidth() {
         return this.w;

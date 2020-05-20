@@ -92,40 +92,32 @@ public class Sokoban extends JFrame {
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        JButton backButton = new JButton("BACK TO GAME");
-        backButton.setFocusable(false);
-        backButton.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
-        backButton.addActionListener(new ActionListener() {
+        JButton[] buttons = new JButton[4];
+        buttons[0] = new JButton("BACK TO GAME");
+        buttons[1] = new JButton("SELECT LEVEL");
+        buttons[2] = new JButton("HIGHSCORES");
+        buttons[3] = new JButton("EXIT");
+
+        buttons[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 board.togglePause();
                 splitPane.setDividerLocation(board.getBoardWidth() + OFFSET);
             }
         });
-        JButton exitButton = new JButton("EXIT");
-        exitButton.setFocusable(false);
-        exitButton.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
-        exitButton.addActionListener(new ActionListener() {
+        buttons[3].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
-        JButton scoresButton = new JButton("HIGHSCORES");
-        scoresButton.setFocusable(false);
-        scoresButton.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
-        JButton levelsButton = new JButton("SELECT LEVEL");
-        levelsButton.setFocusable(false);
-        levelsButton.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
 
-        pane.add(backButton, gbc);
-        pane.add(Box.createRigidArea(new Dimension(10, 20)), gbc);
-        pane.add(scoresButton, gbc);
-        pane.add(Box.createRigidArea(new Dimension(10, 20)), gbc);
-        pane.add(levelsButton, gbc);
-        pane.add(Box.createRigidArea(new Dimension(10, 20)), gbc);
-        pane.add(exitButton, gbc);
-
+        for (JButton btn : buttons) {
+            btn.setFocusable(false);
+            btn.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
+            pane.add(btn, gbc);
+            pane.add(Box.createRigidArea(new Dimension(10, 20)), gbc);
+        }
         gbc.weighty = 1;
 
         return pane;
