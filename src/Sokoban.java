@@ -17,6 +17,10 @@ public class Sokoban extends JFrame {
     private Board board;
     private JPanel menu;
 
+    Timer silderTimer;
+    TimerTask showMenuTask;
+    TimerTask hideMenuTask;
+
     public Sokoban() {
         initUI();
     }
@@ -28,12 +32,38 @@ public class Sokoban extends JFrame {
         menu = initMenu();
 
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, board, menu);
+        splitPane.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
         splitPane.setOneTouchExpandable(false);
         add(splitPane);
-        splitPane.setDividerLocation(board.getBoardWidth() + OFFSET);
+        splitPane.setDividerLocation(board.getBoardWidth());
         splitPane.setDividerSize(0);
 
-        /*TimerTask timerTask = new TimerTask() {
+        setTitle("Sokoban");
+        setMinimumSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     //ustawia akcję na kliknięcie przycisku zamykania(nie jest ustawiona domyślnie)
+        setLocationRelativeTo(null);                        //ustawia pozycję okna w odniesieniu do innego komponentu, tu wyśrodkowane
+        setResizable(true);
+        pack();
+    }
+
+    public void hideMenu() {
+        board.togglePause();
+        splitPane.setDividerLocation(this.getWidth());
+
+        //silderTimer.scheduleAtFixedRate(hideMenuTask, 0, 5);
+    }
+
+    public void showMenu() {
+        board.togglePause();
+        splitPane.setDividerLocation(0.7);
+
+        //silderTimer.scheduleAtFixedRate(showMenuTask, 0, 5);
+    }
+
+    private void initSilderTimer() {
+        silderTimer = new Timer("SilderTimer");
+
+        showMenuTask = new TimerTask() {
             double ratio = 1;
             double delta = ratio / 10;
 
@@ -50,24 +80,24 @@ public class Sokoban extends JFrame {
                 splitPane.setDividerLocation(ratio);
             }
         };
-        Timer silderTimer = new Timer("SilderTimer");
-        silderTimer.scheduleAtFixedRate(timerTask, 0, 5);*/
 
-        setTitle("Sokoban");
-        setSize(board.getBoardWidth() + OFFSET, board.getBoardHeight() + 2 * OFFSET);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     //ustawia akcję na kliknięcie przycisku zamykania(nie jest ustawiona domyślnie)
-        setLocationRelativeTo(null);                        //ustawia pozycję okna w odniesieniu do innego komponentu, tu wyśrodkowane
-        setResizable(false);
-    }
+        hideMenuTask = new TimerTask() {
+            double ratio = 1;
+            double delta = ratio / 10;
 
-    public void hideMenu() {
-        board.togglePause();
-        splitPane.setDividerLocation(board.getBoardWidth() + OFFSET);
-    }
-
-    public void showMenu() {
-        board.togglePause();
-        splitPane.setDividerLocation(0.7);
+            @Override
+            public void run() {
+                ratio += delta;
+                if (ratio >= 1.0) {
+                    ratio = 1.0;
+                    delta = -delta;
+                } else if (ratio <= 0.0) {
+                    delta = -delta;
+                    ratio = 0;
+                }
+                splitPane.setDividerLocation(ratio);
+            }
+        };
     }
 
     public void initMenuBttn(final Board board) {
@@ -81,7 +111,7 @@ public class Sokoban extends JFrame {
         });
         menuButton.setBackground(new Color(193, 191, 255));
         menuButton.setFocusable(false);
-        menuButton.setBounds(board.getBoardWidth() - 2 * OFFSET, OFFSET, 40, 40);
+        menuButton.setBounds(board.getBoardWidth() - 50, 50, 40, 40);
         board.add(menuButton);
     }
 
@@ -124,6 +154,7 @@ public class Sokoban extends JFrame {
         }
         gbc.weighty = 1;
 
+        initSilderTimer();
         return pane;
     }
 
@@ -137,5 +168,4 @@ public class Sokoban extends JFrame {
             }
         });
     }
-
 }

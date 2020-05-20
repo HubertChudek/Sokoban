@@ -107,7 +107,7 @@ public class Board extends JPanel {
             }
         }
         this.w += OFFSET;
-        this.h = y;                   //dosotsowuje wysokość okna do liczby rzędów
+        this.h = y + OFFSET;                   //dosotsowuje wysokość okna do liczby rzędów
     }
 
     @Override
@@ -131,13 +131,11 @@ public class Board extends JPanel {
         animator.start();
     }
 
-
     private void initScores() {
 
         counter = 0;
         moves = 0;
         initTimer();
-
     }
 
     private void initTimer() {
@@ -163,7 +161,8 @@ public class Board extends JPanel {
     private void drawWorld(Graphics g) {            //rysuje obiekty świata na planszy
 
         g.setColor(new Color(146, 148, 142));
-        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        // g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        g.fillRect(0, 0, this.getBoardWidth(), this.getBoardHeight());
 
         ArrayList<Actor> world = new ArrayList<>();
 
@@ -228,7 +227,6 @@ public class Board extends JPanel {
         g.setColor(new Color(0, 0, 0));
         g.drawString(moves, 25, 35);
     }
-
 
     @Override
     protected void paintComponent(Graphics g) {
