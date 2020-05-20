@@ -162,7 +162,7 @@ public class Board extends JPanel {
 
         g.setColor(new Color(146, 148, 142));
         // g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        g.fillRect(0, 0, this.getBoardWidth(), this.getBoardHeight());
+        g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         ArrayList<Actor> world = new ArrayList<>();
 
@@ -360,9 +360,7 @@ public class Board extends JPanel {
 
                     if (soko.isLeftCollision(bag)) {
 
-                        for (int j = 0; j < baggs.size(); j++) {
-
-                            Baggage item = baggs.get(j);
+                        for (Baggage item : baggs) {
 
                             if (!bag.equals(item)) {
 
@@ -389,9 +387,7 @@ public class Board extends JPanel {
 
                     if (soko.isRightCollision(bag)) {
 
-                        for (int j = 0; j < baggs.size(); j++) {
-
-                            Baggage item = baggs.get(j);
+                        for (Baggage item : baggs) {
 
                             if (!bag.equals(item)) {
 
@@ -419,9 +415,7 @@ public class Board extends JPanel {
 
                     if (soko.isTopCollision(bag)) {
 
-                        for (int j = 0; j < baggs.size(); j++) {
-
-                            Baggage item = baggs.get(j);
+                        for (Baggage item : baggs) {
 
                             if (!bag.equals(item)) {
 
@@ -449,9 +443,7 @@ public class Board extends JPanel {
 
                     if (soko.isBottomCollision(bag)) {
 
-                        for (int j = 0; j < baggs.size(); j++) {
-
-                            Baggage item = baggs.get(j);
+                        for (Baggage item : baggs) {
 
                             if (!bag.equals(item)) {
 

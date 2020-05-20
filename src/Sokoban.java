@@ -18,8 +18,8 @@ public class Sokoban extends JFrame {
     private JPanel menu;
 
     Timer silderTimer;
-    TimerTask showMenuTask;
-    TimerTask hideMenuTask;
+    TimerTask menuTask;
+    int divider;
 
     public Sokoban() {
         initUI();
@@ -32,6 +32,7 @@ public class Sokoban extends JFrame {
         menu = initMenu();
 
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, board, menu);
+        initSliderTimer();
         splitPane.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
         splitPane.setOneTouchExpandable(false);
         add(splitPane);
@@ -42,62 +43,62 @@ public class Sokoban extends JFrame {
         setMinimumSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     //ustawia akcję na kliknięcie przycisku zamykania(nie jest ustawiona domyślnie)
         setLocationRelativeTo(null);                        //ustawia pozycję okna w odniesieniu do innego komponentu, tu wyśrodkowane
-        setResizable(true);
+        setResizable(false);
         pack();
     }
 
     public void hideMenu() {
         board.togglePause();
-        splitPane.setDividerLocation(this.getWidth());
-
-        //silderTimer.scheduleAtFixedRate(hideMenuTask, 0, 5);
+        menuTask = createTask("hide");
+        silderTimer.scheduleAtFixedRate(menuTask, 0, 5);
     }
+
 
     public void showMenu() {
         board.togglePause();
-        splitPane.setDividerLocation(0.7);
-
-        //silderTimer.scheduleAtFixedRate(showMenuTask, 0, 5);
+        menuTask = createTask("show");
+        silderTimer.scheduleAtFixedRate(menuTask, 0, 5);
     }
 
-    private void initSilderTimer() {
+    private void initSliderTimer() {
         silderTimer = new Timer("SilderTimer");
 
-        showMenuTask = new TimerTask() {
-            double ratio = 1;
-            double delta = ratio / 10;
+        menuTask = createTask("show");
+    }
 
-            @Override
-            public void run() {
-                ratio += delta;
-                if (ratio >= 1.0) {
-                    ratio = 1.0;
-                    delta = -delta;
-                } else if (ratio <= 0.0) {
-                    delta = -delta;
-                    ratio = 0;
+    public TimerTask createTask(String name) throws IllegalArgumentException {
+        TimerTask timerTask;
+        divider = splitPane.getDividerLocation();
+
+        if (name.equals("show") ) {
+            timerTask = new TimerTask() {
+
+                @Override
+                public void run() {
+                    divider -= 8;
+                    splitPane.setDividerLocation(divider);
+                    if (divider <= (int) (board.getBoardWidth() * 0.75)) {
+                        menuTask.cancel();
+                    }
                 }
-                splitPane.setDividerLocation(ratio);
-            }
-        };
+            };
+        } else if (name.equals("hide")) {
+            timerTask = new TimerTask() {
 
-        hideMenuTask = new TimerTask() {
-            double ratio = 1;
-            double delta = ratio / 10;
-
-            @Override
-            public void run() {
-                ratio += delta;
-                if (ratio >= 1.0) {
-                    ratio = 1.0;
-                    delta = -delta;
-                } else if (ratio <= 0.0) {
-                    delta = -delta;
-                    ratio = 0;
+                @Override
+                public void run() {
+                    divider += 8;
+                    splitPane.setDividerLocation(divider);
+                    if (divider >= board.getBoardWidth()) {
+                        menuTask.cancel();
+                    }
                 }
-                splitPane.setDividerLocation(ratio);
-            }
-        };
+            };
+        } else {
+            throw new IllegalArgumentException();
+        }
+
+        return timerTask;
     }
 
     public void initMenuBttn(final Board board) {
@@ -111,7 +112,7 @@ public class Sokoban extends JFrame {
         });
         menuButton.setBackground(new Color(193, 191, 255));
         menuButton.setFocusable(false);
-        menuButton.setBounds(board.getBoardWidth() - 50, 50, 40, 40);
+        menuButton.setBounds(board.getBoardWidth() - 90, 50, 40, 40);
         board.add(menuButton);
     }
 
@@ -154,7 +155,6 @@ public class Sokoban extends JFrame {
         }
         gbc.weighty = 1;
 
-        initSilderTimer();
         return pane;
     }
 
