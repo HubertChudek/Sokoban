@@ -12,7 +12,7 @@ public class Wall extends Actor {
 
     private void initWall() {
 
-        ImageIcon iicon = new ImageIcon("assets//brick.png");
+        ImageIcon iicon = new ImageIcon("assets/brick.png");
         setImage(iicon.getImage());
     }
 }

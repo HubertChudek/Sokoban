@@ -31,10 +31,10 @@ public class Sokoban extends JFrame {
         splitPane.setOneTouchExpandable(false);
         add(splitPane);
         splitPane.setDividerLocation(board.getBoardWidth() + OFFSET);
-        splitPane.setDividerSize(10);
+        splitPane.setDividerSize(0);
 
         /*TimerTask timerTask = new TimerTask() {
-            double ratio = 0.02;
+            double ratio = 1;
             double delta = ratio / 10;
 
             @Override
@@ -53,15 +53,21 @@ public class Sokoban extends JFrame {
         Timer silderTimer = new Timer("SilderTimer");
         silderTimer.scheduleAtFixedRate(timerTask, 0, 5);*/
 
-        //Provide minimum sizes for the two components in the split pane
-        Dimension minimumSize = new Dimension(100, 100);
-        menu.setMinimumSize(minimumSize);
-
         setTitle("Sokoban");
         setSize(board.getBoardWidth() + OFFSET, board.getBoardHeight() + 2 * OFFSET);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     //ustawia akcję na kliknięcie przycisku zamykania(nie jest ustawiona domyślnie)
         setLocationRelativeTo(null);                        //ustawia pozycję okna w odniesieniu do innego komponentu, tu wyśrodkowane
         setResizable(false);
+    }
+
+    public void hideMenu() {
+        board.togglePause();
+        splitPane.setDividerLocation(board.getBoardWidth() + OFFSET);
+    }
+
+    public void showMenu() {
+        board.togglePause();
+        splitPane.setDividerLocation(0.7);
     }
 
     public void initMenuBttn(final Board board) {
@@ -70,8 +76,7 @@ public class Sokoban extends JFrame {
         menuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                board.togglePause();
-                splitPane.setDividerLocation(0.7);
+                showMenu();
             }
         });
         menuButton.setBackground(new Color(193, 191, 255));
@@ -101,8 +106,7 @@ public class Sokoban extends JFrame {
         buttons[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                board.togglePause();
-                splitPane.setDividerLocation(board.getBoardWidth() + OFFSET);
+                hideMenu();
             }
         });
         buttons[3].addActionListener(new ActionListener() {
