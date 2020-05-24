@@ -1,8 +1,3 @@
-//# - ściana
-//$ - pudło
-//. - miejsce gdzie należy przesunąć pudła
-//@ - sokoban/gracz
-//\n - nowy rząd
         ########
         #     @#
         # $#$ ##

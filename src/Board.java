@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.*;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.TimerTask;
 import java.util.Timer;
@@ -29,7 +31,7 @@ public class Board extends JPanel {
     private boolean isPaused = false;
     private Semaphore sem = new Semaphore(1);
 
-    private String level                    //poziom jest przechowywany w postaci ciągu znaków,
+    /*private String level                    //poziom jest przechowywany w postaci ciągu znaków,
             = "    ######\n"                //w celu czytelności i łatwości edycji
             + "    ##   #\n"                //# - ściana
             + "    ##$  #\n"                //$ - pudło
@@ -40,7 +42,8 @@ public class Board extends JPanel {
             + "## $  $          ..#\n"
             + "###### ### #@##  ..#\n"
             + "    ##     #########\n"
-            + "    ########\n";
+            + "    ########\n";*/
+    private String level = "";
 
     public Board() {
 
@@ -50,6 +53,7 @@ public class Board extends JPanel {
 
     private void initBoard() {
         setFocusable(true);
+        loadLevel(1);
         initWorld();
         initScores();
     }
@@ -129,14 +133,12 @@ public class Board extends JPanel {
     }
 
     private void initScores() {
-
         counter = 0;
         moves = 0;
         initTimer();
     }
 
     private void initTimer() {
-
         timer.cancel();
         TimerTask timerTask = new TimerTask() {
             @Override
@@ -156,13 +158,10 @@ public class Board extends JPanel {
     }
 
     private void drawWorld(Graphics g) {            //rysuje obiekty świata na planszy
-
         g.setColor(new Color(146, 148, 142));
-        // g.fillRect(0, 0, this.getWidth(), this.getHeight());
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         ArrayList<Actor> world = new ArrayList<>();
-
         world.addAll(walls);
         world.addAll(areas);
         world.addAll(baggs);
@@ -171,14 +170,12 @@ public class Board extends JPanel {
         for (Actor item : world) {
             g.drawImage(item.getImage(), item.getX(), item.getY(), this);
         }
-
         if (isCompleted) {
             drawCompleted(g);
         }
     }
 
     private void drawCompleted(Graphics g) {
-
         String msg1 = "Completed";
         String msg2 = "Press 'r' to restart";
         Font big = new Font("Calibri", Font.BOLD, 100);
@@ -472,6 +469,25 @@ public class Board extends JPanel {
         }
     }
 
+    public void loadLevel(int number) {
+        File file = new File("levels/lvl3.txt");
+        BufferedReader reader;
+        String line;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine()) != null) {
+                level += line;
+                level += '\n';
+                System.out.println(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println('\n' + level);
+    }
+
     public void restartLevel() {
         areas.clear();
         baggs.clear();
@@ -495,7 +511,7 @@ public class Board extends JPanel {
         }
     }
 
-    public boolean getPauseStatus(){
+    public boolean getPauseStatus() {
         return this.isPaused;
     }
 
