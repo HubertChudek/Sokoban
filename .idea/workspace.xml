@@ -6,12 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09d439c6-28a5-489c-a5d4-f42f41a24d06" name="Default Changelist" comment="hook up menu toggle to ESC key">
+    <list default="true" id="09d439c6-28a5-489c-a5d4-f42f41a24d06" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sokoban/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sokoban/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sokoban/Sokoban.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sokoban/Sokoban.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sokoban.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sokoban.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +68,7 @@
         <item itemvalue="Application.SplitPaneTest" />
         <item itemvalue="Application.Sokoban" />
         <item itemvalue="Application.SplitPaneTest" />
+        <item itemvalue="Application.Sokoban" />
       </list>
     </recent_temporary>
   </component>
@@ -96,6 +93,7 @@
       <workItem from="1589928872742" duration="359000" />
       <workItem from="1589968657588" duration="4123000" />
       <workItem from="1590330082402" duration="5523000" />
+      <workItem from="1590339957429" duration="229000" />
     </task>
     <task id="LOCAL-00001" summary="add button on board and add pause() method as action">
       <created>1588281572351</created>
@@ -223,7 +221,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -278,26 +278,26 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="500" y="184" key="FileChooserDialogImpl/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589919356289" />
-    <state width="1397" height="169" key="GridCell.Tab.0.bottom" timestamp="1590335803889">
+    <state width="1397" height="169" key="GridCell.Tab.0.bottom" timestamp="1590336052569">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="169" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590335803889" />
-    <state width="1397" height="169" key="GridCell.Tab.0.center" timestamp="1590335803889">
+    <state width="1397" height="169" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590336052569" />
+    <state width="1397" height="169" key="GridCell.Tab.0.center" timestamp="1590336052569">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="169" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590335803889" />
-    <state width="1397" height="169" key="GridCell.Tab.0.left" timestamp="1590335803889">
+    <state width="1397" height="169" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590336052569" />
+    <state width="1397" height="169" key="GridCell.Tab.0.left" timestamp="1590336052569">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="169" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590335803889" />
-    <state width="1397" height="169" key="GridCell.Tab.0.right" timestamp="1590335803889">
+    <state width="1397" height="169" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590336052569" />
+    <state width="1397" height="169" key="GridCell.Tab.0.right" timestamp="1590336052569">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="169" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590335803889" />
+    <state width="1397" height="169" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590336052569" />
     <state width="1397" height="186" key="GridCell.Tab.1.bottom" timestamp="1589992161097">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
@@ -330,20 +330,20 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="441" y="171" width="570" height="524" key="StructurePopup/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589904919114" />
-    <state x="312" y="162" key="Vcs.Push.Dialog.v2" timestamp="1590330338510">
+    <state x="312" y="162" key="Vcs.Push.Dialog.v2" timestamp="1590335929578">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="312" y="162" key="Vcs.Push.Dialog.v2/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281583424" />
-    <state x="312" y="162" key="Vcs.Push.Dialog.v2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590330338510" />
+    <state x="312" y="162" key="Vcs.Push.Dialog.v2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590335929578" />
     <state x="92" y="92" width="1256" height="676" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1590332248622">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="92" y="92" width="1256" height="676" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590332248622" />
-    <state x="416" y="253" key="com.intellij.ide.util.TipDialog" timestamp="1590330134359">
+    <state x="416" y="253" key="com.intellij.ide.util.TipDialog" timestamp="1590339963964">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="416" y="253" key="com.intellij.ide.util.TipDialog/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588347081641" />
-    <state x="416" y="253" key="com.intellij.ide.util.TipDialog/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590330134359" />
+    <state x="416" y="253" key="com.intellij.ide.util.TipDialog/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590339963964" />
     <state x="92" y="92" width="1256" height="676" key="dock-window-1" timestamp="1589903063607">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
