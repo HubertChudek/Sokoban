@@ -3,6 +3,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -22,6 +24,7 @@ public class Sokoban extends JFrame {
     int divider;
 
     public Sokoban() {
+        addKeyListener(new TAdapter());     //dodaje nasłuchiwacz klawiatury do komponentu
         initUI();
     }
 
@@ -44,6 +47,8 @@ public class Sokoban extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     //ustawia akcję na kliknięcie przycisku zamykania(nie jest ustawiona domyślnie)
         setLocationRelativeTo(null);                        //ustawia pozycję okna w odniesieniu do innego komponentu, tu wyśrodkowane
         setResizable(false);
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
         pack();
     }
 
@@ -70,7 +75,7 @@ public class Sokoban extends JFrame {
         TimerTask timerTask;
         divider = splitPane.getDividerLocation();
 
-        if (name.equals("show") ) {
+        if (name.equals("show")) {
             timerTask = new TimerTask() {
 
                 @Override
@@ -156,6 +161,14 @@ public class Sokoban extends JFrame {
         gbc.weighty = 1;
 
         return pane;
+    }
+
+    private class TAdapter extends KeyAdapter {             //klasa obsługująca eventy wciśnięcia klawisza
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            board.keyPressed(e);
+        }
     }
 
     public static void main(String[] args) {

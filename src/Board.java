@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.TimerTask;
@@ -50,8 +49,6 @@ public class Board extends JPanel {
     }
 
     private void initBoard() {
-
-        addKeyListener(new TAdapter());     //dodaje nasłuchiwacz klawiatury do komponentu
         setFocusable(true);
         initWorld();
         initScores();
@@ -172,12 +169,10 @@ public class Board extends JPanel {
         world.add(soko);
 
         for (Actor item : world) {
-
             g.drawImage(item.getImage(), item.getX(), item.getY(), this);
         }
 
         if (isCompleted) {
-
             drawCompleted(g);
         }
     }
@@ -237,66 +232,10 @@ public class Board extends JPanel {
         Toolkit.getDefaultToolkit().sync();
     }
 
-    private class TAdapter extends KeyAdapter {             //klasa obsługująca eventy wciśnięcia klawisza
+    public void keyPressed(KeyEvent e) {
 
-        @Override
-        public void keyPressed(KeyEvent e) {
-
-            if (isCompleted || isPaused) {
-                switch (e.getKeyCode()) {
-                    case KeyEvent.VK_R:
-                        restartLevel();
-                        break;
-                    case KeyEvent.VK_ESCAPE:
-                        togglePause();
-                        break;
-                    default:
-                        break;
-                }
-                return;
-            }
-
-            switch (e.getKeyCode()) {           //pobrannie kodu klawisza i na jego podstawie wykonanie określonej akcji
-                case KeyEvent.VK_LEFT:
-                    if (checkWallCollision(soko, LEFT_COLLISION)) {
-                        break;
-                    }
-                    if (checkBagCollision(LEFT_COLLISION)) {
-                        break;
-                    }
-                    soko.move(-SPACE, 0);
-                    moves++;
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    if (checkWallCollision(soko, RIGHT_COLLISION)) {
-                        break;
-                    }
-                    if (checkBagCollision(RIGHT_COLLISION)) {
-                        break;
-                    }
-                    soko.move(SPACE, 0);
-                    moves++;
-                    break;
-                case KeyEvent.VK_UP:
-                    if (checkWallCollision(soko, TOP_COLLISION)) {
-                        break;
-                    }
-                    if (checkBagCollision(TOP_COLLISION)) {
-                        break;
-                    }
-                    soko.move(0, -SPACE);
-                    moves++;
-                    break;
-                case KeyEvent.VK_DOWN:
-                    if (checkWallCollision(soko, BOTTOM_COLLISION)) {
-                        break;
-                    }
-                    if (checkBagCollision(BOTTOM_COLLISION)) {
-                        break;
-                    }
-                    soko.move(0, SPACE);
-                    moves++;
-                    break;
+        if (isCompleted || isPaused) {
+            switch (e.getKeyCode()) {
                 case KeyEvent.VK_R:
                     restartLevel();
                     break;
@@ -306,8 +245,60 @@ public class Board extends JPanel {
                 default:
                     break;
             }
-            isCompleted();
+            return;
         }
+
+        switch (e.getKeyCode()) {           //pobrannie kodu klawisza i na jego podstawie wykonanie określonej akcji
+            case KeyEvent.VK_LEFT:
+                if (checkWallCollision(soko, LEFT_COLLISION)) {
+                    break;
+                }
+                if (checkBagCollision(LEFT_COLLISION)) {
+                    break;
+                }
+                soko.move(-SPACE, 0);
+                moves++;
+                break;
+            case KeyEvent.VK_RIGHT:
+                if (checkWallCollision(soko, RIGHT_COLLISION)) {
+                    break;
+                }
+                if (checkBagCollision(RIGHT_COLLISION)) {
+                    break;
+                }
+                soko.move(SPACE, 0);
+                moves++;
+                break;
+            case KeyEvent.VK_UP:
+                if (checkWallCollision(soko, TOP_COLLISION)) {
+                    break;
+                }
+                if (checkBagCollision(TOP_COLLISION)) {
+                    break;
+                }
+                soko.move(0, -SPACE);
+                moves++;
+                break;
+            case KeyEvent.VK_DOWN:
+                if (checkWallCollision(soko, BOTTOM_COLLISION)) {
+                    break;
+                }
+                if (checkBagCollision(BOTTOM_COLLISION)) {
+                    break;
+                }
+                soko.move(0, SPACE);
+                moves++;
+                break;
+            case KeyEvent.VK_R:
+                restartLevel();
+                break;
+            case KeyEvent.VK_ESCAPE:
+                togglePause();
+                break;
+            default:
+                break;
+        }
+        isCompleted();
     }
 
     private boolean checkWallCollision(Actor actor, int type) {         //sprawdza czy aktor podany w argumencie koliduje z jakąkolwiek ścianą
