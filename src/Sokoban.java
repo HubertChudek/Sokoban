@@ -19,7 +19,7 @@ public class Sokoban extends JFrame {
     private Board board;
     private JPanel menu;
 
-    Timer silderTimer;
+    Timer sliderTimer;
     TimerTask menuTask;
     int divider;
 
@@ -34,7 +34,10 @@ public class Sokoban extends JFrame {
         initMenuBttn(board);
         menu = initMenu();
 
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, board, menu);
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+                true,
+                board,
+                menu);
         initSliderTimer();
         splitPane.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
         splitPane.setOneTouchExpandable(false);
@@ -54,20 +57,21 @@ public class Sokoban extends JFrame {
 
     public void hideMenu() {
         board.togglePause();
+        menuTask.cancel();
         menuTask = createTask("hide");
-        silderTimer.scheduleAtFixedRate(menuTask, 0, 5);
+        sliderTimer.scheduleAtFixedRate(menuTask, 0, 5);
     }
 
 
     public void showMenu() {
         board.togglePause();
+        menuTask.cancel();
         menuTask = createTask("show");
-        silderTimer.scheduleAtFixedRate(menuTask, 0, 5);
+        sliderTimer.scheduleAtFixedRate(menuTask, 0, 5);
     }
 
     private void initSliderTimer() {
-        silderTimer = new Timer("SilderTimer");
-
+        sliderTimer = new Timer("SilderTimer");
         menuTask = createTask("show");
     }
 
@@ -167,12 +171,18 @@ public class Sokoban extends JFrame {
 
         @Override
         public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                if (board.getPauseStatus()) {
+                    hideMenu();
+                } else {
+                    showMenu();
+                }
+            }
             board.keyPressed(e);
         }
     }
 
     public static void main(String[] args) {
-
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {

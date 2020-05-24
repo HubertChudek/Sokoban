@@ -235,15 +235,8 @@ public class Board extends JPanel {
     public void keyPressed(KeyEvent e) {
 
         if (isCompleted || isPaused) {
-            switch (e.getKeyCode()) {
-                case KeyEvent.VK_R:
-                    restartLevel();
-                    break;
-                case KeyEvent.VK_ESCAPE:
-                    togglePause();
-                    break;
-                default:
-                    break;
+            if (e.getKeyCode() == KeyEvent.VK_R) {
+                restartLevel();
             }
             return;
         }
@@ -291,9 +284,6 @@ public class Board extends JPanel {
                 break;
             case KeyEvent.VK_R:
                 restartLevel();
-                break;
-            case KeyEvent.VK_ESCAPE:
-                togglePause();
                 break;
             default:
                 break;
@@ -462,7 +452,6 @@ public class Board extends JPanel {
     }
 
     public void isCompleted() {              //sprawdza czy poziom został ukonczony, czyli czy wszystkie skzynki są na polach
-
         int numberOfBags = baggs.size();
         int finishedBags = 0;
 
@@ -484,7 +473,6 @@ public class Board extends JPanel {
     }
 
     public void restartLevel() {
-
         areas.clear();
         baggs.clear();
         walls.clear();
@@ -505,6 +493,10 @@ public class Board extends JPanel {
             timer.cancel();
             isPaused = true;
         }
+    }
+
+    public boolean getPauseStatus(){
+        return this.isPaused;
     }
 
     public int getBoardWidth() {
