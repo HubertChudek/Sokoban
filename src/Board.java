@@ -53,7 +53,7 @@ public class Board extends JPanel {
 
     private void initBoard() {
         setFocusable(true);
-        loadLevel(1);
+        loadLevel(3);
         initWorld();
         initScores();
     }
@@ -470,22 +470,21 @@ public class Board extends JPanel {
     }
 
     public void loadLevel(int number) {
-        File file = new File("levels/lvl3.txt");
+        String baseDirectory = "levels/lvl";
+        String extension = ".txt";
+        File file = new File(baseDirectory + number + extension);
         BufferedReader reader;
         String line;
         try {
             reader = new BufferedReader(new FileReader(file));
             while ((line = reader.readLine()) != null) {
-                level += line;
-                level += '\n';
-                System.out.println(line);
+                level += line + '\n';
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println('\n' + level);
     }
 
     public void restartLevel() {
