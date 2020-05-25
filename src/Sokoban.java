@@ -31,7 +31,7 @@ public class Sokoban extends JFrame {
     private void initUI() {
         board = new Board();
         board.setLayout(null);
-        initMenuBttn(board);
+        initPauseBttn(board);
         menu = initMenu();
 
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
@@ -110,19 +110,19 @@ public class Sokoban extends JFrame {
         return timerTask;
     }
 
-    public void initMenuBttn(final Board board) {
-        JButton menuButton = new JButton(new ImageIcon("assets/pause.png"));
-        menuButton.setMargin(new Insets(0, 0, 0, 0));
-        menuButton.addActionListener(new ActionListener() {
+    public void initPauseBttn(final Board board) {
+        JButton pauseButton = new JButton(new ImageIcon("assets/pause.png"));
+        pauseButton.setMargin(new Insets(0, 0, 0, 0));
+        pauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
                 showMenu();
             }
         });
-        menuButton.setBackground(new Color(193, 191, 255));
-        menuButton.setFocusable(false);
-        menuButton.setBounds(board.getBoardWidth() - 90, 50, 40, 40);
-        board.add(menuButton);
+        pauseButton.setBackground(new Color(193, 191, 255));
+        pauseButton.setFocusable(false);
+        pauseButton.setBounds(board.getBoardWidth() - 90, 50, 40, 40);
+        board.add(pauseButton);
     }
 
     public JPanel initMenu() {
@@ -147,6 +147,16 @@ public class Sokoban extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 hideMenu();
+            }
+        });
+        buttons[1].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                board.loadLevel(1);
+                board.reloadBoard();
+                hideMenu();
+                splitPane.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+                pack();
             }
         });
         buttons[3].addActionListener(new ActionListener() {
