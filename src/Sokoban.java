@@ -1,5 +1,5 @@
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -168,8 +168,8 @@ public class Sokoban extends JFrame {
         });
         for (JButton btn : buttons) {
             btn.setFocusable(false);
-            //btn.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
-            btn.setBorder(BorderFactory.createEmptyBorder(15, 10, 15, 10));
+            btn.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED),
+                                                            BorderFactory.createEmptyBorder(15, 10, 15, 10)));
             btn.setBackground(new Color(173, 102, 255));
             btn.setFont(new Font("Arial", Font.BOLD, 18));
             pane.add(btn, gbc);
