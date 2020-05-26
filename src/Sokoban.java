@@ -119,7 +119,7 @@ public class Sokoban extends JFrame {
                 showMenu();
             }
         });
-        pauseButton.setBackground(new Color(193, 191, 255));
+        pauseButton.setBackground(new Color(144, 236, 255));
         pauseButton.setFocusable(false);
         pauseButton.setBounds(board.getBoardWidth() - 90, 50, 40, 40);
         board.add(pauseButton);
@@ -127,7 +127,7 @@ public class Sokoban extends JFrame {
 
     public JPanel initMenu() {
         JPanel pane = new JPanel(new GridBagLayout());
-        pane.setBackground(new Color(193, 191, 255));
+        pane.setBackground(new Color(144, 236, 255));
 
         pane.setBorder(new EmptyBorder(50, 50, 50, 50));
         pane.setLayout(new GridBagLayout());
@@ -152,10 +152,11 @@ public class Sokoban extends JFrame {
         buttons[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                board.loadLevel(1);
+                board.loadLevel(4);
                 board.reloadBoard();
                 hideMenu();
                 splitPane.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+                revalidate();
                 pack();
             }
         });
@@ -165,13 +166,16 @@ public class Sokoban extends JFrame {
                 System.exit(0);
             }
         });
-
         for (JButton btn : buttons) {
             btn.setFocusable(false);
-            btn.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
+            //btn.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
+            btn.setBorder(BorderFactory.createEmptyBorder(15, 10, 15, 10));
+            btn.setBackground(new Color(173, 102, 255));
+            btn.setFont(new Font("Arial", Font.BOLD, 18));
             pane.add(btn, gbc);
             pane.add(Box.createRigidArea(new Dimension(10, 20)), gbc);
         }
+        buttons[3].setBackground(new Color(255, 107, 159));
         gbc.weighty = 1;
 
         return pane;
