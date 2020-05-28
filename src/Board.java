@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.TimerTask;
 import java.util.Timer;
@@ -29,27 +30,23 @@ public class Board extends JPanel {
     private boolean isPaused = false;
     private Semaphore sem = new Semaphore(1);
 
-    private String level                    //poziom jest przechowywany w postaci ciągu znaków,
-            = "    ######\n"                //w celu czytelności i łatwości edycji
-            + "    ##   #\n"                //# - ściana
-            + "    ##$  #\n"                //$ - pudło
-            + "  ####  $##\n"               //. - miejsce gdzie należy przesunąć pudła
-            + "  ##  $ $ #\n"               //@ - sokoban/gracz
-            + "#### # ## #   ######\n"      //\n - nowy rząd
-            + "##   # ## #####  ..#\n"
-            + "## $  $          ..#\n"
-            + "###### ### #@##  ..#\n"
-            + "    ##     #########\n"
-            + "    ########\n";
+    //poziomy są przechowywane w postaci ciągu znaków w plikach txt,
+    //w celu czytelności i łatwości edycji
+    //# - ściana
+    //$ - pudło
+    //. - miejsce gdzie należy przesunąć pudła
+    // @ - sokoban/gracz
+    // \n - nowy rząd
+    private String level = "@";
 
     public Board() {
-
         timer = new Timer();
         initBoard();
     }
 
     private void initBoard() {
         setFocusable(true);
+        loadLevel(3);
         initWorld();
         initScores();
     }
@@ -59,6 +56,8 @@ public class Board extends JPanel {
         walls = new ArrayList<>();      //inincjacja list
         baggs = new ArrayList<>();
         areas = new ArrayList<>();
+        //this.w = 0;
+        //this.h = 0;
 
         //odległość planszy od brzegów okna
         int OFFSET = Sokoban.OFFSET;
@@ -70,7 +69,6 @@ public class Board extends JPanel {
         Area a;
 
         for (int i = 0; i < level.length(); i++) {  //przechodzi znak po znaku po stringu poziomu
-
             switch (level.charAt(i)) {              //i tworzy odpowiednie obiekty i dodaje je do list
                 case '#':                           //jednocześnie sukcesywnie ustawiając ich pozycję na planszy
                     w = new Wall(x, y);
@@ -129,14 +127,12 @@ public class Board extends JPanel {
     }
 
     private void initScores() {
-
         counter = 0;
         moves = 0;
         initTimer();
     }
 
     private void initTimer() {
-
         timer.cancel();
         TimerTask timerTask = new TimerTask() {
             @Override
@@ -156,13 +152,10 @@ public class Board extends JPanel {
     }
 
     private void drawWorld(Graphics g) {            //rysuje obiekty świata na planszy
-
         g.setColor(new Color(146, 148, 142));
-        // g.fillRect(0, 0, this.getWidth(), this.getHeight());
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         ArrayList<Actor> world = new ArrayList<>();
-
         world.addAll(walls);
         world.addAll(areas);
         world.addAll(baggs);
@@ -171,14 +164,12 @@ public class Board extends JPanel {
         for (Actor item : world) {
             g.drawImage(item.getImage(), item.getX(), item.getY(), this);
         }
-
         if (isCompleted) {
             drawCompleted(g);
         }
     }
 
     private void drawCompleted(Graphics g) {
-
         String msg1 = "Completed";
         String msg2 = "Press 'r' to restart";
         Font big = new Font("Calibri", Font.BOLD, 100);
@@ -451,7 +442,7 @@ public class Board extends JPanel {
         return false;
     }
 
-    public void isCompleted() {              //sprawdza czy poziom został ukonczony, czyli czy wszystkie skzynki są na polach
+    private void isCompleted() {              //sprawdza czy poziom został ukonczony, czyli czy wszystkie skzynki są na polach
         int numberOfBags = baggs.size();
         int finishedBags = 0;
 
@@ -470,6 +461,31 @@ public class Board extends JPanel {
             isCompleted = true;
             timer.cancel();
         }
+    }
+
+    public void loadLevel(int number) {
+        String baseDirectory = "levels/lvl";
+        String extension = ".txt";
+        File file = new File(baseDirectory + number + extension);
+        BufferedReader reader;
+        String line;
+        level = "";
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine()) != null) {
+                level += line + '\n';
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.exit(-2);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void reloadBoard() {
+        initWorld();
+        initScores();
     }
 
     public void restartLevel() {
@@ -495,7 +511,7 @@ public class Board extends JPanel {
         }
     }
 
-    public boolean getPauseStatus(){
+    public boolean getPauseStatus() {
         return this.isPaused;
     }
 

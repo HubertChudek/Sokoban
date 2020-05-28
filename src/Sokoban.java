@@ -1,5 +1,5 @@
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,22 +31,13 @@ public class Sokoban extends JFrame {
     private void initUI() {
         board = new Board();
         board.setLayout(null);
-        initMenuBttn(board);
+        initPauseBttn(board);
         menu = initMenu();
 
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
-                true,
-                board,
-                menu);
-        initSliderTimer();
-        splitPane.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
-        splitPane.setOneTouchExpandable(false);
-        add(splitPane);
-        splitPane.setDividerLocation(board.getBoardWidth());
-        splitPane.setDividerSize(0);
+        initSplitPane();
 
         setTitle("Sokoban");
-        setMinimumSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+        setSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     //ustawia akcję na kliknięcie przycisku zamykania(nie jest ustawiona domyślnie)
         setLocationRelativeTo(null);                        //ustawia pozycję okna w odniesieniu do innego komponentu, tu wyśrodkowane
         setResizable(false);
@@ -62,7 +53,6 @@ public class Sokoban extends JFrame {
         sliderTimer.scheduleAtFixedRate(menuTask, 0, 5);
     }
 
-
     public void showMenu() {
         board.togglePause();
         menuTask.cancel();
@@ -73,6 +63,19 @@ public class Sokoban extends JFrame {
     private void initSliderTimer() {
         sliderTimer = new Timer("SilderTimer");
         menuTask = createTask("show");
+    }
+
+    private void initSplitPane(){
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+                true,
+                board,
+                menu);
+        initSliderTimer();
+        splitPane.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+        splitPane.setOneTouchExpandable(false);
+        add(splitPane);
+        splitPane.setDividerLocation(board.getBoardWidth());
+        splitPane.setDividerSize(0);
     }
 
     public TimerTask createTask(String name) throws IllegalArgumentException {
@@ -110,24 +113,24 @@ public class Sokoban extends JFrame {
         return timerTask;
     }
 
-    public void initMenuBttn(final Board board) {
-        JButton menuButton = new JButton(new ImageIcon("assets/pause.png"));
-        menuButton.setMargin(new Insets(0, 0, 0, 0));
-        menuButton.addActionListener(new ActionListener() {
+    public void initPauseBttn(final Board board) {
+        JButton pauseButton = new JButton(new ImageIcon("assets/pause.png"));
+        pauseButton.setMargin(new Insets(0, 0, 0, 0));
+        pauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
                 showMenu();
             }
         });
-        menuButton.setBackground(new Color(193, 191, 255));
-        menuButton.setFocusable(false);
-        menuButton.setBounds(board.getBoardWidth() - 90, 50, 40, 40);
-        board.add(menuButton);
+        pauseButton.setBackground(new Color(144, 236, 255));
+        pauseButton.setFocusable(false);
+        pauseButton.setBounds(board.getBoardWidth() - 90, 50, 40, 40);
+        board.add(pauseButton);
     }
 
     public JPanel initMenu() {
         JPanel pane = new JPanel(new GridBagLayout());
-        pane.setBackground(new Color(193, 191, 255));
+        pane.setBackground(new Color(144, 236, 255));
 
         pane.setBorder(new EmptyBorder(50, 50, 50, 50));
         pane.setLayout(new GridBagLayout());
@@ -149,19 +152,34 @@ public class Sokoban extends JFrame {
                 hideMenu();
             }
         });
+        buttons[1].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                board.loadLevel(4);
+                board.reloadBoard();
+                hideMenu();
+                splitPane.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+                revalidate();
+                pack();
+            }
+        });
         buttons[3].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
-
         for (JButton btn : buttons) {
             btn.setFocusable(false);
-            btn.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
+            btn.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createBevelBorder(BevelBorder.RAISED),
+                    BorderFactory.createEmptyBorder(15, 10, 15, 10)));
+            btn.setBackground(new Color(173, 102, 255));
+            btn.setFont(new Font("Arial", Font.BOLD, 18));
             pane.add(btn, gbc);
             pane.add(Box.createRigidArea(new Dimension(10, 20)), gbc);
         }
+        buttons[3].setBackground(new Color(255, 107, 159));
         gbc.weighty = 1;
 
         return pane;
