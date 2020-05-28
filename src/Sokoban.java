@@ -18,6 +18,7 @@ public class Sokoban extends JFrame {
     private JSplitPane splitPane;
     private Board board;
     private JPanel menu;
+    private LevelsMenu levelsMenu;
 
     Timer sliderTimer;
     TimerTask menuTask;
@@ -29,10 +30,15 @@ public class Sokoban extends JFrame {
     }
 
     private void initUI() {
+
         board = new Board();
         board.setLayout(null);
         initPauseBttn(board);
         menu = initMenu();
+
+        levelsMenu = new LevelsMenu();
+        levelsMenu.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+        add(levelsMenu);
 
         initSplitPane();
 
@@ -65,7 +71,7 @@ public class Sokoban extends JFrame {
         menuTask = createTask("show");
     }
 
-    private void initSplitPane(){
+    private void initSplitPane() {
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 true,
                 board,
@@ -155,7 +161,9 @@ public class Sokoban extends JFrame {
         buttons[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                hideMenu();
+
+                revalidate();
+                repaint();
             }
         });
         buttons[3].addActionListener(new ActionListener() {
