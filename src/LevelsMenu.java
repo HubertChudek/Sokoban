@@ -25,7 +25,6 @@ public class LevelsMenu extends JPanel {
         int filesCount = 0;
         try {
             filesCount = new File(baseDirectory).listFiles().length / 2; //liczba plików w folderze
-            System.out.println(filesCount);
         } catch (Exception e) {
             System.out.println("No files found!");
             e.printStackTrace();

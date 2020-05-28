@@ -15,6 +15,7 @@ import java.util.TimerTask;
 public class Sokoban extends JFrame {
 
     public static final int OFFSET = 30;
+    private JPanel mainContentPane;
     private JSplitPane splitPane;
     private Board board;
     private JPanel menu;
@@ -30,9 +31,7 @@ public class Sokoban extends JFrame {
     }
 
     private void initUI() {
-
         board = new Board();
-        board.setLayout(null);
         initPauseBttn(board);
         menu = initMenu();
 
@@ -41,6 +40,7 @@ public class Sokoban extends JFrame {
         add(levelsMenu);
 
         initSplitPane();
+        initMainPane();
 
         setTitle("Sokoban");
         setSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
@@ -50,6 +50,15 @@ public class Sokoban extends JFrame {
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
         pack();
+    }
+
+    private void initMainPane() {
+        mainContentPane = new JPanel();
+        mainContentPane.setLayout(new CardLayout());
+        mainContentPane.add(splitPane, "Split pane");
+        mainContentPane.add(levelsMenu,"Level menu");
+
+        this.getContentPane().add(mainContentPane, BorderLayout.CENTER);
     }
 
     public void hideMenu() {
@@ -79,7 +88,7 @@ public class Sokoban extends JFrame {
         initSliderTimer();
         splitPane.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
         splitPane.setOneTouchExpandable(false);
-        add(splitPane);
+        //add(splitPane);
         splitPane.setDividerLocation(board.getBoardWidth());
         splitPane.setDividerSize(0);
     }
@@ -161,9 +170,8 @@ public class Sokoban extends JFrame {
         buttons[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                revalidate();
-                repaint();
+                CardLayout cardLayout = (CardLayout) mainContentPane.getLayout();
+                cardLayout.show(mainContentPane,"Level menu");
             }
         });
         buttons[3].addActionListener(new ActionListener() {

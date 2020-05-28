@@ -46,6 +46,7 @@ public class Board extends JPanel {
 
     private void initBoard() {
         setFocusable(true);
+        setLayout(null);
         loadLevel(3);
         initWorld();
         initScores();
