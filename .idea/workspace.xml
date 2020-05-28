@@ -46,8 +46,8 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
@@ -261,15 +261,19 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="450" y="213" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589929100054" />
+    <state x="568" y="318" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1590685317325">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="568" y="318" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590685317325" />
     <state x="467" y="162" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1589919365338">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="467" y="162" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589919365338" />
-    <state x="162" y="24" key="CommitChangelistDialog2" timestamp="1590335587797">
+    <state x="162" y="24" key="CommitChangelistDialog2" timestamp="1590685333228">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281571155" />
-    <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590335587797" />
+    <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590685333228" />
     <state x="92" y="92" width="1256" height="676" key="DiffContextDialog" timestamp="1589900304707">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
@@ -278,26 +282,26 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="500" y="184" key="FileChooserDialogImpl/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589919356289" />
-    <state width="1397" height="169" key="GridCell.Tab.0.bottom" timestamp="1590335803889">
+    <state width="1397" height="169" key="GridCell.Tab.0.bottom" timestamp="1590685342436">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="169" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590335803889" />
-    <state width="1397" height="169" key="GridCell.Tab.0.center" timestamp="1590335803889">
+    <state width="1397" height="169" key="GridCell.Tab.0.bottom/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590685342436" />
+    <state width="1397" height="169" key="GridCell.Tab.0.center" timestamp="1590685342435">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="169" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590335803889" />
-    <state width="1397" height="169" key="GridCell.Tab.0.left" timestamp="1590335803889">
+    <state width="1397" height="169" key="GridCell.Tab.0.center/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590685342435" />
+    <state width="1397" height="169" key="GridCell.Tab.0.left" timestamp="1590685342435">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="169" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590335803889" />
-    <state width="1397" height="169" key="GridCell.Tab.0.right" timestamp="1590335803889">
+    <state width="1397" height="169" key="GridCell.Tab.0.left/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590685342435" />
+    <state width="1397" height="169" key="GridCell.Tab.0.right" timestamp="1590685342435">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1397" height="222" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281601210" />
-    <state width="1397" height="169" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590335803889" />
+    <state width="1397" height="169" key="GridCell.Tab.0.right/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590685342435" />
     <state width="1397" height="186" key="GridCell.Tab.1.bottom" timestamp="1589992161097">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
@@ -322,10 +326,10 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="338" y="151" key="RollbackChangesDialog/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1588980354966" />
-    <state x="200" y="4" key="SettingsEditor" timestamp="1589929129489">
+    <state x="200" y="4" key="SettingsEditor" timestamp="1590685311211">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="200" y="4" key="SettingsEditor/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589929129489" />
+    <state x="200" y="4" key="SettingsEditor/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590685311211" />
     <state x="441" y="171" width="570" height="524" key="StructurePopup" timestamp="1589904919114">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
