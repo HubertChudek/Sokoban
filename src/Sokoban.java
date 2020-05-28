@@ -34,16 +34,7 @@ public class Sokoban extends JFrame {
         initPauseBttn(board);
         menu = initMenu();
 
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
-                true,
-                board,
-                menu);
-        initSliderTimer();
-        splitPane.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
-        splitPane.setOneTouchExpandable(false);
-        add(splitPane);
-        splitPane.setDividerLocation(board.getBoardWidth());
-        splitPane.setDividerSize(0);
+        initSplitPane();
 
         setTitle("Sokoban");
         setSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
@@ -72,6 +63,19 @@ public class Sokoban extends JFrame {
     private void initSliderTimer() {
         sliderTimer = new Timer("SilderTimer");
         menuTask = createTask("show");
+    }
+
+    private void initSplitPane(){
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+                true,
+                board,
+                menu);
+        initSliderTimer();
+        splitPane.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+        splitPane.setOneTouchExpandable(false);
+        add(splitPane);
+        splitPane.setDividerLocation(board.getBoardWidth());
+        splitPane.setDividerSize(0);
     }
 
     public TimerTask createTask(String name) throws IllegalArgumentException {
