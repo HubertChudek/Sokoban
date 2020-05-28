@@ -155,12 +155,7 @@ public class Sokoban extends JFrame {
         buttons[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                board.loadLevel(4);
-                board.reloadBoard();
                 hideMenu();
-                splitPane.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
-                revalidate();
-                pack();
             }
         });
         buttons[3].addActionListener(new ActionListener() {
