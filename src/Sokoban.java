@@ -46,7 +46,7 @@ public class Sokoban extends JFrame {
         splitPane.setDividerSize(0);
 
         setTitle("Sokoban");
-        setMinimumSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+        setSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     //ustawia akcję na kliknięcie przycisku zamykania(nie jest ustawiona domyślnie)
         setLocationRelativeTo(null);                        //ustawia pozycję okna w odniesieniu do innego komponentu, tu wyśrodkowane
         setResizable(false);
@@ -61,7 +61,6 @@ public class Sokoban extends JFrame {
         menuTask = createTask("hide");
         sliderTimer.scheduleAtFixedRate(menuTask, 0, 5);
     }
-
 
     public void showMenu() {
         board.togglePause();
@@ -168,8 +167,9 @@ public class Sokoban extends JFrame {
         });
         for (JButton btn : buttons) {
             btn.setFocusable(false);
-            btn.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED),
-                                                            BorderFactory.createEmptyBorder(15, 10, 15, 10)));
+            btn.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createBevelBorder(BevelBorder.RAISED),
+                    BorderFactory.createEmptyBorder(15, 10, 15, 10)));
             btn.setBackground(new Color(173, 102, 255));
             btn.setFont(new Font("Arial", Font.BOLD, 18));
             pane.add(btn, gbc);
