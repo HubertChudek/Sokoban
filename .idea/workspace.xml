@@ -6,9 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09d439c6-28a5-489c-a5d4-f42f41a24d06" name="Default Changelist" comment="add main Pane to Frame with CardLayout, successful switching between board and levels menu">
-      <change afterPath="$PROJECT_DIR$/src/SplitMenu.java" afterDir="false" />
+    <list default="true" id="09d439c6-28a5-489c-a5d4-f42f41a24d06" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SplitPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sokoban/Sokoban.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sokoban/Sokoban.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SplitMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SlideMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +103,7 @@
       <workItem from="1590528485885" duration="50000" />
       <workItem from="1590668096294" duration="314000" />
       <workItem from="1590670843182" duration="5814000" />
-      <workItem from="1590774453735" duration="210000" />
+      <workItem from="1590774453735" duration="513000" />
     </task>
     <task id="LOCAL-00001" summary="add button on board and add pause() method as action">
       <created>1588281572351</created>
@@ -291,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590692180890</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="create SplitMenu class">
+      <created>1590774680595</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1590774680595</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,7 +331,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add semaphore synchronization" />
     <MESSAGE value="add menu button icon" />
     <MESSAGE value="set background color of menu button" />
     <MESSAGE value="encapsulate button initiation code" />
@@ -346,7 +355,8 @@
     <MESSAGE value="create LevelsMenu class" />
     <MESSAGE value="create loadLevelThumbnail and init methods in LevelsMenu class" />
     <MESSAGE value="add main Pane to Frame with CardLayout, successful switching between board and levels menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="add main Pane to Frame with CardLayout, successful switching between board and levels menu" />
+    <MESSAGE value="create SplitMenu class" />
+    <option name="LAST_COMMIT_MESSAGE" value="create SplitMenu class" />
   </component>
   <component name="WindowStateProjectService">
     <state x="312" y="88" key="#Notifications" timestamp="1589483805185">
@@ -365,11 +375,11 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="467" y="162" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1589919365338" />
-    <state x="376" y="25" key="CommitChangelistDialog2" timestamp="1590774483061">
+    <state x="376" y="25" key="CommitChangelistDialog2" timestamp="1590774679032">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="162" y="24" key="CommitChangelistDialog2/0.0.1440.860/-1920.-173.1536.824@0.0.1440.860" timestamp="1588281571155" />
-    <state x="376" y="25" key="CommitChangelistDialog2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590774483061" />
+    <state x="376" y="25" key="CommitChangelistDialog2/0.0.1440.860/-1920.-174.1536.824@0.0.1440.860" timestamp="1590774679032" />
     <state x="92" y="92" width="1256" height="676" key="DiffContextDialog" timestamp="1590685130432">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
