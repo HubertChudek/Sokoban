@@ -1,12 +1,9 @@
 import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * @author HubiSzubi
@@ -16,14 +13,10 @@ public class Sokoban extends JFrame {
 
     public static final int OFFSET = 30;
     private JPanel mainContentPane = new JPanel();
-    private JSplitPane splitPane;
+    private SplitPanel splitPanel;
     private Board board;
     private SlideMenu menu;
     private LevelsMenu levelsMenu;
-
-    Timer sliderTimer;
-    TimerTask menuTask;
-    int divider;
 
     public Sokoban() {
         addKeyListener(new TAdapter());     //dodaje nasłuchiwacz klawiatury do komponentu
@@ -38,9 +31,8 @@ public class Sokoban extends JFrame {
 
         levelsMenu = new LevelsMenu();
         levelsMenu.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
-        add(levelsMenu);
+        splitPanel = new SplitPanel(board, menu);
 
-        initSplitPane();
         initMainPane();
 
         setTitle("Sokoban");
@@ -55,76 +47,10 @@ public class Sokoban extends JFrame {
 
     private void initMainPane() {
         mainContentPane.setLayout(new CardLayout());
-        mainContentPane.add(splitPane, "Split pane");
+        mainContentPane.add(splitPanel, "Split pane");
         mainContentPane.add(levelsMenu, "Level menu");
 
         this.getContentPane().add(mainContentPane, BorderLayout.CENTER);
-    }
-
-    public void hideMenu() {
-        board.togglePause();
-        menuTask.cancel();
-        menuTask = createTask("hide");
-        sliderTimer.scheduleAtFixedRate(menuTask, 0, 5);
-    }
-
-    public void showMenu() {
-        board.togglePause();
-        menuTask.cancel();
-        menuTask = createTask("show");
-        sliderTimer.scheduleAtFixedRate(menuTask, 0, 5);
-    }
-
-    private void initSliderTimer() {
-        sliderTimer = new Timer("SilderTimer");
-        menuTask = createTask("show");
-    }
-
-    private void initSplitPane() {
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
-                true,
-                board,
-                menu);
-        initSliderTimer();
-        splitPane.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
-        splitPane.setOneTouchExpandable(false);
-        splitPane.setDividerLocation(board.getBoardWidth());
-        splitPane.setDividerSize(0);
-    }
-
-    public TimerTask createTask(String name) throws IllegalArgumentException {
-        TimerTask timerTask;
-        divider = splitPane.getDividerLocation();
-
-        if (name.equals("show")) {
-            timerTask = new TimerTask() {
-
-                @Override
-                public void run() {
-                    divider -= 8;
-                    splitPane.setDividerLocation(divider);
-                    if (divider <= (int) (board.getBoardWidth() * 0.75)) {
-                        menuTask.cancel();
-                    }
-                }
-            };
-        } else if (name.equals("hide")) {
-            timerTask = new TimerTask() {
-
-                @Override
-                public void run() {
-                    divider += 8;
-                    splitPane.setDividerLocation(divider);
-                    if (divider >= board.getBoardWidth()) {
-                        menuTask.cancel();
-                    }
-                }
-            };
-        } else {
-            throw new IllegalArgumentException();
-        }
-
-        return timerTask;
     }
 
     public void initPauseBttn(final Board board) {
@@ -133,7 +59,7 @@ public class Sokoban extends JFrame {
         pauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                showMenu();
+                splitPanel.showMenu();
             }
         });
         pauseButton.setBackground(new Color(144, 236, 255));
@@ -148,13 +74,21 @@ public class Sokoban extends JFrame {
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 if (board.getPauseStatus()) {
-                    hideMenu();
+                    splitPanel.hideMenu();
                 } else {
-                    showMenu();
+                    splitPanel.showMenu();
                 }
             }
             board.keyPressed(e);
         }
+    }
+
+    public void hideMenu() {
+        splitPanel.hideMenu();
+    }
+
+    public void showMenu() {
+        splitPanel.showMenu();
     }
 
     public static void main(String[] args) {
