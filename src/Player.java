@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.Objects;
 
 public class Player extends Actor {
 
@@ -9,13 +10,11 @@ public class Player extends Actor {
     }
 
     private void initPlayer() {
-
-        ImageIcon iicon = new ImageIcon("assets/soko.png");
+        ImageIcon iicon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("soko.png")));
         setImage(iicon.getImage());
     }
 
     public void move(int x, int y) {
-
         setX(getX() + x);
         setY(getY() + y);
     }
