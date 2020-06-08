@@ -11,7 +11,6 @@ import java.awt.event.KeyEvent;
  */
 public class Sokoban extends JFrame {
 
-    public static final int OFFSET = 30;
     private JPanel mainContentPane = new JPanel();
     private SplitPanel splitPanel;
     private Board board;

@@ -9,11 +9,7 @@ import javax.swing.*;
 
 public class Board extends JPanel {
 
-    public final static int SPACE = 50;             //wielkość sprite'u bloku ściany i jednocześnie jednego pola na planszy
-    private final int LEFT_COLLISION = 1;           //ustalenie typów kolizji
-    private final int RIGHT_COLLISION = 2;
-    private final int TOP_COLLISION = 3;
-    private final int BOTTOM_COLLISION = 4;
+    final static int SPACE = 50;             //wielkość sprite'u bloku ściany i jednocześnie jednego pola na planszy
 
     private ArrayList<Wall> walls;          //listy przechowujące wszystkie części mapy
     private ArrayList<Baggage> baggs;
@@ -25,6 +21,7 @@ public class Board extends JPanel {
     private int moves = 0;
     private int counter = 0;               //timer do zliczania czasu gry
     private Timer timer;
+    private Collision collision;
 
     private boolean isCompleted = false;
     private boolean isPaused = false;
@@ -41,7 +38,9 @@ public class Board extends JPanel {
 
     public Board() {
         timer = new Timer();
+        collision = new Collision();
         initBoard();
+        collision.loadActors(walls, baggs, areas, soko);
     }
 
     private void initBoard() {
@@ -61,7 +60,7 @@ public class Board extends JPanel {
         this.h = 0;
 
         //odległość planszy od brzegów okna
-        int OFFSET = Sokoban.OFFSET;
+        int OFFSET = SPACE;
         int x = OFFSET;                 //ustalanie początku rysowania elementów
         int y = OFFSET;
 
@@ -102,8 +101,10 @@ public class Board extends JPanel {
                     break;
             }
         }
-        this.w += 2*OFFSET;
-        this.h = y + 2*OFFSET;                   //dosotsowuje wysokość okna do liczby rzędów
+        this.w += 2 * OFFSET;
+        this.h = y + 2 * OFFSET;                   //dosotsowuje wysokość okna do liczby rzędów
+
+        collision.loadActors(walls, baggs, areas, soko);
     }
 
     @Override
@@ -119,7 +120,6 @@ public class Board extends JPanel {
                         repaint();
                         Thread.sleep(30);
                     } catch (InterruptedException ignored) {
-
                     }
                 }
             }
@@ -235,42 +235,34 @@ public class Board extends JPanel {
 
         switch (e.getKeyCode()) {           //pobrannie kodu klawisza i na jego podstawie wykonanie określonej akcji
             case KeyEvent.VK_LEFT:
-                if (checkWallCollision(soko, LEFT_COLLISION)) {
+                if (collision.isColliding(soko, e)) {
                     break;
                 }
-                if (checkBagCollision(LEFT_COLLISION)) {
-                    break;
-                }
+                isCompleted();
                 soko.move(-SPACE, 0);
                 moves++;
                 break;
             case KeyEvent.VK_RIGHT:
-                if (checkWallCollision(soko, RIGHT_COLLISION)) {
+                if (collision.isColliding(soko, e)) {
                     break;
                 }
-                if (checkBagCollision(RIGHT_COLLISION)) {
-                    break;
-                }
+                isCompleted();
                 soko.move(SPACE, 0);
                 moves++;
                 break;
             case KeyEvent.VK_UP:
-                if (checkWallCollision(soko, TOP_COLLISION)) {
+                if (collision.isColliding(soko, e)) {
                     break;
                 }
-                if (checkBagCollision(TOP_COLLISION)) {
-                    break;
-                }
+                isCompleted();
                 soko.move(0, -SPACE);
                 moves++;
                 break;
             case KeyEvent.VK_DOWN:
-                if (checkWallCollision(soko, BOTTOM_COLLISION)) {
+                if (collision.isColliding(soko, e)) {
                     break;
                 }
-                if (checkBagCollision(BOTTOM_COLLISION)) {
-                    break;
-                }
+                isCompleted();
                 soko.move(0, SPACE);
                 moves++;
                 break;
@@ -283,165 +275,6 @@ public class Board extends JPanel {
         isCompleted();
     }
 
-    private boolean checkWallCollision(Actor actor, int type) {         //sprawdza czy aktor podany w argumencie koliduje z jakąkolwiek ścianą
-
-        switch (type) {
-            case LEFT_COLLISION:
-
-                for (Wall wall : walls) {
-                    if (actor.isLeftCollision(wall)) {
-                        return true;
-                    }
-                }
-                return false;
-            case RIGHT_COLLISION:
-                for (Wall wall : walls) {
-                    if (actor.isRightCollision(wall)) {
-                        return true;
-                    }
-                }
-                return false;
-            case TOP_COLLISION:
-                for (Wall wall : walls) {
-                    if (actor.isTopCollision(wall)) {
-                        return true;
-                    }
-                }
-                return false;
-            case BOTTOM_COLLISION:
-                for (Wall wall : walls) {
-                    if (actor.isBottomCollision(wall)) {
-                        return true;
-                    }
-                }
-                return false;
-            default:
-                break;
-        }
-        return true;
-    }
-
-    private boolean checkBagCollision(int type) {
-
-        switch (type) {
-
-            case LEFT_COLLISION:
-
-                for (int i = 0; i < baggs.size(); i++) {
-
-                    Baggage bag = baggs.get(i);
-
-                    if (soko.isLeftCollision(bag)) {
-
-                        for (Baggage item : baggs) {
-
-                            if (!bag.equals(item)) {
-
-                                if (bag.isLeftCollision(item)) {
-                                    return true;
-                                }
-                            }
-                        }
-                        if (checkWallCollision(bag, LEFT_COLLISION)) {
-                            return true;
-                        }
-
-                        bag.move(-SPACE, 0);
-                        isCompleted();
-                    }
-                }
-                return false;
-
-            case RIGHT_COLLISION:
-
-                for (int i = 0; i < baggs.size(); i++) {
-
-                    Baggage bag = baggs.get(i);
-
-                    if (soko.isRightCollision(bag)) {
-
-                        for (Baggage item : baggs) {
-
-                            if (!bag.equals(item)) {
-
-                                if (bag.isRightCollision(item)) {
-                                    return true;
-                                }
-                            }
-
-                            if (checkWallCollision(bag, RIGHT_COLLISION)) {
-                                return true;
-                            }
-                        }
-
-                        bag.move(SPACE, 0);
-                        isCompleted();
-                    }
-                }
-                return false;
-
-            case TOP_COLLISION:
-
-                for (int i = 0; i < baggs.size(); i++) {
-
-                    Baggage bag = baggs.get(i);
-
-                    if (soko.isTopCollision(bag)) {
-
-                        for (Baggage item : baggs) {
-
-                            if (!bag.equals(item)) {
-
-                                if (bag.isTopCollision(item)) {
-                                    return true;
-                                }
-                            }
-
-                            if (checkWallCollision(bag, TOP_COLLISION)) {
-                                return true;
-                            }
-                        }
-
-                        bag.move(0, -SPACE);
-                        isCompleted();
-                    }
-                }
-                return false;
-
-            case BOTTOM_COLLISION:
-
-                for (int i = 0; i < baggs.size(); i++) {
-
-                    Baggage bag = baggs.get(i);
-
-                    if (soko.isBottomCollision(bag)) {
-
-                        for (Baggage item : baggs) {
-
-                            if (!bag.equals(item)) {
-
-                                if (bag.isBottomCollision(item)) {
-                                    return true;
-                                }
-                            }
-
-                            if (checkWallCollision(bag, BOTTOM_COLLISION)) {
-
-                                return true;
-                            }
-                        }
-
-                        bag.move(0, SPACE);
-                        isCompleted();
-                    }
-                }
-                return false;
-
-            default:
-                break;
-        }
-        return false;
-    }
 
     private void isCompleted() {              //sprawdza czy poziom został ukonczony, czyli czy wszystkie skzynki są na polach
         int numberOfBags = baggs.size();
