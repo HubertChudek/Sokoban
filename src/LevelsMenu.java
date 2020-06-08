@@ -36,6 +36,7 @@ public class LevelsMenu extends JPanel {
     private void initThumbnailsPanel() {
         JPanel tempPanel = new JPanel();
         tempPanel.setBackground(new Color(144, 236, 255));
+        tempPanel.setPreferredSize(new Dimension((int)(parent.getWidth() * 0.9), (int)(parent.getHeight() * 0.7)));
         tempPanel.setLayout(cardLayout);
         thumbnailsPanel = tempPanel;
         add(tempPanel);
