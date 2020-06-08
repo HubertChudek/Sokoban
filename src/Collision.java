@@ -17,34 +17,22 @@ public class Collision {
                 if (checkWallCollision(soko, LEFT_COLLISION)) {
                     return true;
                 }
-                if (checkBagCollision(LEFT_COLLISION)) {
-                    return true;
-                }
-                return false;
+                return checkBagCollision(LEFT_COLLISION);
             case KeyEvent.VK_RIGHT:
                 if (checkWallCollision(soko, RIGHT_COLLISION)) {
                     return true;
                 }
-                if (checkBagCollision(RIGHT_COLLISION)) {
-                    return true;
-                }
-                return false;
+                return checkBagCollision(RIGHT_COLLISION);
             case KeyEvent.VK_UP:
                 if (checkWallCollision(soko, TOP_COLLISION)) {
                     return true;
                 }
-                if (checkBagCollision(TOP_COLLISION)) {
-                    return true;
-                }
-                return false;
+                return checkBagCollision(TOP_COLLISION);
             case KeyEvent.VK_DOWN:
                 if (checkWallCollision(soko, BOTTOM_COLLISION)) {
                     return true;
                 }
-                if (checkBagCollision(BOTTOM_COLLISION)) {
-                    return true;
-                }
-                return false;
+                return checkBagCollision(BOTTOM_COLLISION);
             default:
                 return true;
         }

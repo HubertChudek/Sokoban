@@ -55,8 +55,7 @@ public class LevelsMenu extends JPanel {
     }
 
     private void initNavigationButtons() {
-        JButton buttons[] = new JButton[3];
-
+        JButton[] buttons = new JButton[3];
 
         buttons[0] = new JButton("Prev");
         buttons[1] = new JButton("OK");
@@ -118,10 +117,11 @@ public class LevelsMenu extends JPanel {
                 case 1:
                     JLabel card = null;
                     for (Component comp : thumbnailsPanel.getComponents()) {
-                        if (comp.isVisible() == true) {
+                        if (comp.isVisible()) {
                             card = (JLabel) comp;
                         }
                     }
+                    assert card != null;
                     int lvlNumber = Integer.parseInt(card.getName());
                     parent.loadLevel(lvlNumber);
                     break;

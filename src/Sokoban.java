@@ -15,7 +15,6 @@ public class Sokoban extends JFrame {
     private SplitPanel splitPanel;
     private Board board;
     private JButton pauseButton;
-    private SlideMenu menu;
     private LevelsMenu levelsMenu;
 
     public Sokoban() {
@@ -28,7 +27,7 @@ public class Sokoban extends JFrame {
         initPauseBttn(board);
 
         initFrame();
-        menu = new SlideMenu(this, mainContentPane);
+        SlideMenu menu = new SlideMenu(this, mainContentPane);
         levelsMenu = new LevelsMenu(this);
         levelsMenu.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
         splitPanel = new SplitPanel(board, menu);
@@ -79,10 +78,6 @@ public class Sokoban extends JFrame {
 
     public void hideMenu() {
         splitPanel.hideMenu();
-    }
-
-    public void showMenu() {
-        splitPanel.showMenu();
     }
 
     public void loadLevel(int number) {
