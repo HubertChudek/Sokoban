@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.Objects;
 
 public class Area extends Actor{
 
@@ -10,8 +11,7 @@ public class Area extends Actor{
     }
 
     private void initArea() {
-
-        ImageIcon image = new ImageIcon("assets/area.png");
-        setImage(image.getImage());
+        ImageIcon iicon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("area.png")));
+        setImage(iicon.getImage());
     }
 }

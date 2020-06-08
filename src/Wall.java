@@ -1,5 +1,5 @@
-import java.awt.Image;
 import javax.swing.ImageIcon;
+import java.util.Objects;
 
 public class Wall extends Actor {
 
@@ -11,8 +11,7 @@ public class Wall extends Actor {
     }
 
     private void initWall() {
-
-        ImageIcon iicon = new ImageIcon("assets//brick.png");
+        ImageIcon iicon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("brick.png")));
         setImage(iicon.getImage());
     }
 }
