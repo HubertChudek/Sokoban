@@ -29,8 +29,9 @@ public class Sokoban extends JFrame {
 
         menu = new SlideMenu(this, mainContentPane);
 
-        levelsMenu = new LevelsMenu();
+        levelsMenu = new LevelsMenu(board.getBoardWidth(), board.getBoardHeight());
         levelsMenu.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+
         splitPanel = new SplitPanel(board, menu);
 
         initMainPane();

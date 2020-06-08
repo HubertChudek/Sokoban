@@ -30,6 +30,7 @@ public class SlideMenu extends JPanel {
 
         return gbc;
     }
+
     private void initButtons(GridBagConstraints gbc) {
         buttons[0] = new JButton("BACK TO GAME");
         buttons[1] = new JButton("SELECT LEVEL");
@@ -46,7 +47,7 @@ public class SlideMenu extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CardLayout cardLayout = (CardLayout) frameContentPane.getLayout();
-                cardLayout.show(frameContentPane,"Level menu");
+                cardLayout.show(frameContentPane, "Level menu");
             }
         });
         buttons[3].addActionListener(new ActionListener() {
