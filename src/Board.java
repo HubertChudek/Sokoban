@@ -40,7 +40,7 @@ public class Board extends JPanel {
         timer = new Timer();
         collision = new Collision();
         initBoard();
-        collision.loadActors(walls, baggs, areas, soko);
+        collision.loadActors(walls, baggs, soko);
     }
 
     private void initBoard() {
@@ -104,7 +104,7 @@ public class Board extends JPanel {
         this.w += 2 * OFFSET;
         this.h = y + 2 * OFFSET;                   //dosotsowuje wysokość okna do liczby rzędów
 
-        collision.loadActors(walls, baggs, areas, soko);
+        collision.loadActors(walls, baggs, soko);
     }
 
     @Override
@@ -235,7 +235,7 @@ public class Board extends JPanel {
 
         switch (e.getKeyCode()) {           //pobrannie kodu klawisza i na jego podstawie wykonanie określonej akcji
             case KeyEvent.VK_LEFT:
-                if (collision.isColliding(soko, e)) {
+                if (collision.isColliding(e)) {
                     break;
                 }
                 isCompleted();
@@ -243,7 +243,7 @@ public class Board extends JPanel {
                 moves++;
                 break;
             case KeyEvent.VK_RIGHT:
-                if (collision.isColliding(soko, e)) {
+                if (collision.isColliding(e)) {
                     break;
                 }
                 isCompleted();
@@ -251,7 +251,7 @@ public class Board extends JPanel {
                 moves++;
                 break;
             case KeyEvent.VK_UP:
-                if (collision.isColliding(soko, e)) {
+                if (collision.isColliding(e)) {
                     break;
                 }
                 isCompleted();
@@ -259,7 +259,7 @@ public class Board extends JPanel {
                 moves++;
                 break;
             case KeyEvent.VK_DOWN:
-                if (collision.isColliding(soko, e)) {
+                if (collision.isColliding(e)) {
                     break;
                 }
                 isCompleted();
