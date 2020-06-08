@@ -15,6 +15,7 @@ public class Sokoban extends JFrame {
     private JPanel mainContentPane = new JPanel();
     private SplitPanel splitPanel;
     private Board board;
+    private JButton pauseButton;
     private SlideMenu menu;
     private LevelsMenu levelsMenu;
 
@@ -58,6 +59,7 @@ public class Sokoban extends JFrame {
         pauseButton.setBackground(new Color(144, 236, 255));
         pauseButton.setFocusable(false);
         pauseButton.setBounds(board.getBoardWidth() - 90, 50, 40, 40);
+        this.pauseButton = pauseButton;
         board.add(pauseButton);
     }
 
@@ -91,6 +93,7 @@ public class Sokoban extends JFrame {
         splitPanel.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
         splitPanel.setDividerLocation(board.getBoardWidth());
         setSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+        pauseButton.setBounds(board.getBoardWidth() - 90, 50, 40, 40);
         refreshLevelsMenu();
     }
 
