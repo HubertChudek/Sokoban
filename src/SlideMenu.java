@@ -46,6 +46,7 @@ public class SlideMenu extends JPanel {
         buttons[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                mainFrame.hideMenu();
                 CardLayout cardLayout = (CardLayout) frameContentPane.getLayout();
                 cardLayout.show(frameContentPane, "Level menu");
             }

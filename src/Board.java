@@ -47,7 +47,7 @@ public class Board extends JPanel {
     private void initBoard() {
         setFocusable(true);
         setLayout(null);
-        loadLevel(3);
+        loadLevel(4);
         initWorld();
         initScores();
     }
@@ -57,8 +57,8 @@ public class Board extends JPanel {
         walls = new ArrayList<>();      //inincjacja list
         baggs = new ArrayList<>();
         areas = new ArrayList<>();
-        //this.w = 0;
-        //this.h = 0;
+        this.w = 0;
+        this.h = 0;
 
         //odległość planszy od brzegów okna
         int OFFSET = Sokoban.OFFSET;
@@ -102,8 +102,8 @@ public class Board extends JPanel {
                     break;
             }
         }
-        this.w += OFFSET;
-        this.h = y + OFFSET;                   //dosotsowuje wysokość okna do liczby rzędów
+        this.w += 2*OFFSET;
+        this.h = y + 2*OFFSET;                   //dosotsowuje wysokość okna do liczby rzędów
     }
 
     @Override
@@ -153,7 +153,7 @@ public class Board extends JPanel {
     }
 
     private void drawWorld(Graphics g) {            //rysuje obiekty świata na planszy
-        g.setColor(new Color(146, 148, 142));
+        g.setColor(new Color(154, 156, 150));
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         ArrayList<Actor> world = new ArrayList<>();

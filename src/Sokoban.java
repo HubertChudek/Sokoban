@@ -27,22 +27,14 @@ public class Sokoban extends JFrame {
         board = new Board();
         initPauseBttn(board);
 
+        initFrame();
         menu = new SlideMenu(this, mainContentPane);
-
-        levelsMenu = new LevelsMenu(board.getBoardWidth(), board.getBoardHeight());
+        levelsMenu = new LevelsMenu(this);
         levelsMenu.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
-
         splitPanel = new SplitPanel(board, menu);
-
+        splitPanel.showMenu();
         initMainPane();
 
-        setTitle("Sokoban");
-        setSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     //ustawia akcję na kliknięcie przycisku zamykania(nie jest ustawiona domyślnie)
-        setLocationRelativeTo(null);                        //ustawia pozycję okna w odniesieniu do innego komponentu, tu wyśrodkowane
-        setResizable(false);
-        setFocusable(true);
-        setFocusTraversalKeysEnabled(false);
         pack();
     }
 
@@ -90,6 +82,34 @@ public class Sokoban extends JFrame {
 
     public void showMenu() {
         splitPanel.showMenu();
+    }
+
+    public void loadLevel(int number) {
+        board.loadLevel(number);
+        board.reloadBoard();
+        splitPanel.showMenu();
+        splitPanel.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+        splitPanel.setDividerLocation(board.getBoardWidth());
+        setSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+        refreshLevelsMenu();
+    }
+
+    private void refreshLevelsMenu() {
+        CardLayout cardLayout = (CardLayout) mainContentPane.getLayout();
+        cardLayout.removeLayoutComponent(levelsMenu);
+        levelsMenu = new LevelsMenu(this);
+        levelsMenu.setPreferredSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+        mainContentPane.add(levelsMenu, "Level menu");
+    }
+
+    private void initFrame() {
+        setTitle("Sokoban");
+        setSize(new Dimension(board.getBoardWidth(), board.getBoardHeight()));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     //ustawia akcję na kliknięcie przycisku zamykania(nie jest ustawiona domyślnie)
+        setLocationRelativeTo(null);                        //ustawia pozycję okna w odniesieniu do innego komponentu, tu wyśrodkowane
+        setResizable(false);
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
     }
 
     public static void main(String[] args) {

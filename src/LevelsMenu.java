@@ -1,5 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,44 +13,38 @@ public class LevelsMenu extends JPanel {
     private CardLayout cardLayout = new CardLayout();
     private ImageIcon[] thumbnails;
     private JPanel thumbnailsPanel;
-    private int w = 0;
-    private int h = 0;
+    private Sokoban parent;
 
-
-    public LevelsMenu(int width, int height) {
-        this.w = width;
-        this.h = height;
+    public LevelsMenu(Sokoban parent) {
+        this.parent = parent;
 
         initLevelsMenu();
     }
 
     private void initLevelsMenu() {
         setBackground(new Color(144, 236, 255));
-        setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
+        setBorder(BorderFactory.createEmptyBorder(40, 50, 50, 50));
         setLayout(new FlowLayout());
         setVisible(true);
 
-        thumbnailsPanel = initThumbnailsPanel();
-        add(thumbnailsPanel);
+        initThumbnailsPanel();
         loadLevelsThumbnails();
-        initLevelsLayout();
+        initLevelsPreview();
         initNavigationButtons();
     }
 
-    private JPanel initThumbnailsPanel() {
-        JPanel tempPanel =  new JPanel();
+    private void initThumbnailsPanel() {
+        JPanel tempPanel = new JPanel();
         tempPanel.setBackground(new Color(144, 236, 255));
         tempPanel.setLayout(cardLayout);
-
-        return tempPanel;
+        thumbnailsPanel = tempPanel;
+        add(tempPanel);
     }
 
-    private void initLevelsLayout() {
-        for (ImageIcon ii : thumbnails) {
-            JPanel workPanel = new JPanel();
-            workPanel.setLayout(new FlowLayout());
-            JLabel thumb = new JLabel(ii);
-            workPanel.add(thumb);
+    private void initLevelsPreview() {
+        for (int i = 0; i < thumbnails.length; i++) {
+            JLabel thumb = new JLabel(thumbnails[i]);
+            thumb.setName(String.valueOf(i + 1));
             thumbnailsPanel.add(thumb);
         }
     }
@@ -62,12 +57,17 @@ public class LevelsMenu extends JPanel {
         buttons[1] = new JButton("OK");
         buttons[2] = new JButton("Next");
 
-        buttons[0].addActionListener(new ButtonAction(thumbnailsPanel, 0));
-        buttons[2].addActionListener(new ButtonAction(thumbnailsPanel, 2));
+        for (int i = 0; i < 3; i++) {
+            buttons[i].addActionListener(new ButtonAction(thumbnailsPanel, i));
+            add(buttons[i]);
 
-        add(buttons[0]);
-        add(buttons[2]);
-
+            buttons[i].setFocusable(false);
+            buttons[i].setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createBevelBorder(BevelBorder.RAISED),
+                    BorderFactory.createEmptyBorder(5, 10, 5, 10)));
+            buttons[i].setBackground(new Color(173, 102, 255));
+            buttons[i].setFont(new Font("Arial", Font.BOLD, 18));
+        }
     }
 
     public void loadLevelsThumbnails() {
@@ -89,18 +89,18 @@ public class LevelsMenu extends JPanel {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Image dimg = Objects.requireNonNull(img).getScaledInstance(-(w - 100), h - 100, Image.SCALE_SMOOTH); //zunifikować!!!
+            Image dimg = Objects.requireNonNull(img).getScaledInstance(-(int)(parent.getWidth() * 0.7), (int)(parent.getHeight() * 0.7), Image.SCALE_SMOOTH); //zunifikować!!!
 
             thumbnails[i] = new ImageIcon(dimg);
         }
     }
 
     private class ButtonAction implements ActionListener {
-        JPanel parent;
+        JPanel CLparent;
         int no;
 
         public ButtonAction(JPanel parent, int no) {
-            this.parent = parent;
+            this.CLparent = parent;
             this.no = no;
         }
 
@@ -108,12 +108,20 @@ public class LevelsMenu extends JPanel {
         public void actionPerformed(ActionEvent e) {
             switch (no) {
                 case 0:
-                    cardLayout.previous(parent);
+                    cardLayout.previous(CLparent);
                     break;
                 case 1:
+                    JLabel card = null;
+                    for (Component comp : thumbnailsPanel.getComponents()) {
+                        if (comp.isVisible() == true) {
+                            card = (JLabel) comp;
+                        }
+                    }
+                    int lvlNumber = Integer.parseInt(card.getName());
+                    parent.loadLevel(lvlNumber);
                     break;
                 case 2:
-                    cardLayout.next(parent);
+                    cardLayout.next(CLparent);
                     break;
                 default:
                     throw new IllegalArgumentException();
