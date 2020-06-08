@@ -36,7 +36,7 @@ public class LevelsMenu extends JPanel {
     private void initThumbnailsPanel() {
         JPanel tempPanel = new JPanel();
         tempPanel.setBackground(new Color(144, 236, 255));
-        tempPanel.setPreferredSize(new Dimension((int)(parent.getWidth() * 0.9), (int)(parent.getHeight() * 0.7)));
+        tempPanel.setPreferredSize(new Dimension((int) (parent.getWidth() * 0.9), (int) (parent.getHeight() * 0.7)));
         tempPanel.setLayout(cardLayout);
         thumbnailsPanel = tempPanel;
         add(tempPanel);
@@ -45,6 +45,10 @@ public class LevelsMenu extends JPanel {
     private void initLevelsPreview() {
         for (int i = 0; i < thumbnails.length; i++) {
             JLabel thumb = new JLabel(thumbnails[i]);
+            thumb.setText(String.valueOf(i + 1));
+            thumb.setHorizontalTextPosition(JLabel.LEFT);
+            thumb.setVerticalTextPosition(JLabel.TOP);
+            thumb.setFont(new Font("Arial", Font.BOLD, 30));
             thumb.setName(String.valueOf(i + 1));
             thumbnailsPanel.add(thumb);
         }
@@ -90,7 +94,7 @@ public class LevelsMenu extends JPanel {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Image dimg = Objects.requireNonNull(img).getScaledInstance(-(int)(parent.getWidth() * 0.7), (int)(parent.getHeight() * 0.7), Image.SCALE_SMOOTH); //zunifikować!!!
+            Image dimg = Objects.requireNonNull(img).getScaledInstance(-(int) (parent.getWidth() * 0.7), (int) (parent.getHeight() * 0.7), Image.SCALE_SMOOTH); //zunifikować!!!
 
             thumbnails[i] = new ImageIcon(dimg);
         }
